@@ -1,9 +1,8 @@
 import React from 'react';
-import Sharingan from './Sharingan.png'
+import Sharingan from './Images/Sharingan.png'
 import './App.css';
 import './SignIn.css'
-import { withAuthenticator, AmplifySignIn, AmplifySignOut, AmplifySignUp, AmplifyAuthenticator, AmplifyAuthContainer } from '@aws-amplify/ui-react'
-//import {ThemeProvider, theme, ColorModeProvider, CSSReset} from '@chakra-ui/core'
+import {AmplifySignIn, AmplifySignOut, AmplifySignUp, AmplifyAuthenticator, AmplifyAuthContainer, AmplifyButton } from '@aws-amplify/ui-react'
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
 import Amplify from "aws-amplify";
 import awsconfig from "./aws-exports";
@@ -32,10 +31,13 @@ const AuthorizeApp = () => {
                 Welcome, {user.username}
             </h1>
             <AmplifySignOut
-            style={{
-                buttontext: '10px 10px'
-            }}
-            />
+
+                slot="sign-out"
+                style={{
+                    AmplifyButton
+                }}>
+
+            </AmplifySignOut>
         </div>
 
     ):(
