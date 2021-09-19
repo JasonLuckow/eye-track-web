@@ -1,5 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {Grid, makeStyles, TextField} from "@material-ui/core";
+import {
+    FormControl,
+    FormControlLabel,
+    FormLabel,
+    Grid,
+    makeStyles,
+    Radio,
+    RadioGroup,
+    TextField
+} from "@material-ui/core";
 import {useForm, Form} from "../../components/UseForm";
 
 const useStyles = makeStyles(theme => ({
@@ -16,19 +25,19 @@ const initialFValues = {
     id: 0,
     firstName: ' ',
     lastName: '',
+    email: '',
     gender: '',
     age: new Date(),
     disorder: ''
 }
 export default function InitForm() {
-    const classes = useStyles();
 
-    const{
+    const {
         values,
         setValues,
 
         handleInputChange
-    }=useForm(initialFValues);
+    } = useForm(initialFValues);
 
     return (
         <Form>
@@ -54,7 +63,15 @@ export default function InitForm() {
                         value={values.email}
                     />
                 </Grid>
-
+                <Grid item xs={6}>
+                    <FormControl>
+                        <FormLabel>Gender</FormLabel>
+                        <RadioGroup>
+                            <FormControlLabel value="female" control={<Radio/>} label={"Female"}/>
+                            <FormControlLabel value="male" control={<Radio/>} label={"Male"}/>
+                        </RadioGroup>
+                    </FormControl>
+                </Grid>
             </Grid>
         </Form>
     );
