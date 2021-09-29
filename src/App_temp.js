@@ -1,7 +1,7 @@
 import React from 'react';
 import Sharingan from './Images/Sharingan.png'
 import './App.css';
-import './SignIn.css'
+import './Pages/SignIn/SignInDesign.css'
 import {AmplifySignIn, AmplifySignOut, AmplifySignUp, AmplifyAuthenticator, AmplifyAuthContainer, AmplifyButton } from '@aws-amplify/ui-react'
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
 import Amplify from "aws-amplify";

@@ -1,0 +1,45 @@
+.player-wrapper{
+    display: flex;
+    justify-content: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes App-logo-spin2 {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo2 {
+    animation: App-logo-spin2 infinite 20s linear;
+  }
+}
+
+.App-logo {
+  height: 10vmin;
+  pointer-events: none;
+}
+
+.App-logo2{
+  height: 30vmin;
+  pointer-events: none;
+    margin-left:12%
+}
