@@ -1,18 +1,62 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+import SideMenu from "./components/SideMenu";
+import Header from "./components/Header";
+import FormHead from "./Pages/Forms/FormHead";
+import {makeStyles, CssBaseline, createTheme, ThemeProvider} from '@material-ui/core';
+import {withAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react'
+
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: "#333996",
+            light: '#3c44b126'
+        },
+        secondary: {
+            main: "#f83245",
+            light: '#f8324526'
+        },
+        background: {
+            default: "#f4f5fd"
+        },
+    },
+    overrides: {
+        MuiAppBar: {
+            root: {
+                transform: 'translateZ(0)'
+            }
+        }
+    },
+    props: {
+        MuiIconButton: {
+            disableRipple: true
+        }
+    }
+})
+
+const useStyles = makeStyles({
+    appMain: {
+        paddingLeft: '320px',
+        width: '100%'
+    }
+})
+
 
 function App() {
-  return (
-    <div className="App">
-      <header>
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>We now have Auth!</h1>
-      </header>
-      <AmplifySignOut />
-    </div>
-  );
+    const classes = useStyles();
+
+    return (
+        <ThemeProvider theme={theme}>
+            <SideMenu/>
+            <div className={classes.appMain}>
+                <Header/>
+                <FormHead/>
+                <AmplifySignOut/>
+            </div>
+            <CssBaseline/>
+        </ThemeProvider>
+    );
 }
 
 export default withAuthenticator(App);
