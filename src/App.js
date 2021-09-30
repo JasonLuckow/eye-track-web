@@ -4,10 +4,18 @@ import SideMenu from "./components/SideMenu";
 import Header from "./components/Header";
 import FormHead from "./Pages/Forms/FormHead";
 import {makeStyles, CssBaseline, createTheme, ThemeProvider} from '@material-ui/core';
-import {withAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react'
+import {AmplifySignOut, AmplifyAuthenticator, AmplifyAuthContainer, AmplifyButton} from '@aws-amplify/ui-react'
+import {AuthState, onAuthUIStateChange} from "@aws-amplify/ui-components";
+import awsconfig from "./aws-exports";
+import SignIn from "./Pages/SignIn/SignIn";
+import "./Pages/SignIn/SignInDesign.css"
+import CreateAccount from "./Pages/SignIn/CreateAccount";
+import VideoPlayer from "./Pages/Application/VideoPlayer"
+import Amplify from "aws-amplify";
 
+Amplify.configure(awsconfig);
 
-const theme = createTheme({
+/*const theme = createTheme({
     palette: {
         primary: {
             main: "#333996",
@@ -33,30 +41,44 @@ const theme = createTheme({
             disableRipple: true
         }
     }
-})
+})*/
 
-const useStyles = makeStyles({
+/*const useStyles = makeStyles({
     appMain: {
         paddingLeft: '320px',
         width: '100%'
     }
-})
+})*/
 
+const AuthorizeApp = () => {
+    //const classes = useStyles()
+    const [authState, setAuthState] = React.useState();
+    const [user, setUser] = React.useState();
 
-function App() {
-    const classes = useStyles();
+    React.useEffect(() => {
+        return onAuthUIStateChange((nextAuthState, authData) => {
 
-    return (
-        <ThemeProvider theme={theme}>
-            <SideMenu/>
-            <div className={classes.appMain}>
-                <Header/>
-                <FormHead/>
-                <AmplifySignOut/>
+            setAuthState(nextAuthState);
+            setUser(authData)
+        });
+    }, []);
+    return authState ===AuthState.SignedIn && user ?(
+        <>
+            <VideoPlayer/>
+            <div className="App">
+                <AmplifySignOut />
             </div>
-            <CssBaseline/>
-        </ThemeProvider>
+        </>
+    ):(
+        <AmplifyAuthContainer>
+            <div className={"SignInDesign"}>
+                <AmplifyAuthenticator>
+                    <CreateAccount/>
+                    <SignIn/>
+                </AmplifyAuthenticator>
+            </div>
+        </AmplifyAuthContainer>
     );
 }
 
-export default withAuthenticator(App);
+export default AuthorizeApp;
