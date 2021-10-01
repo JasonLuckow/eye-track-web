@@ -19,7 +19,7 @@ export default function VideoPlayer() {
         })
     }
 
-    return index == videos.length-1 ?(
+    return index === videos.length-1 ?(
 
         <div className="player-wrapper">
             <img src={aDepth0} className="App-logo" alt="logo" />
@@ -30,7 +30,7 @@ export default function VideoPlayer() {
                 Complete Assessment >>
             </button>
         </div>
-    ): index != videos.length ? (
+    ): index !== videos.length ? (
         <div className="player-wrapper">
             <img src={aDepth0} className="App-logo" alt="logo" />
             <img src={aDepth120} className="App-logo2" alt="logo" />

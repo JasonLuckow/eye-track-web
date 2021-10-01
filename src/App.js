@@ -12,10 +12,13 @@ import "./Pages/SignIn/SignInDesign.css"
 import CreateAccount from "./Pages/SignIn/CreateAccount";
 import VideoPlayer from "./Pages/Application/VideoPlayer"
 import Amplify from "aws-amplify";
+import {useEffect} from 'react';
+import webgazer from 'webgazer';
+import FrontCam from './components/FrontCam';
 
-Amplify.configure(awsconfig);
+// Amplify.configure(awsconfig);
 
-/*const theme = createTheme({
+const theme = createTheme({
     palette: {
         primary: {
             main: "#333996",
@@ -41,32 +44,52 @@ Amplify.configure(awsconfig);
             disableRipple: true
         }
     }
-})*/
+})
 
-/*const useStyles = makeStyles({
+const useStyles = makeStyles({
     appMain: {
         paddingLeft: '320px',
         width: '100%'
     }
-})*/
+})
 
-const AuthorizeApp = () => {
-    //const classes = useStyles()
+function App() {
+    
+    const classes = useStyles()
     const [authState, setAuthState] = React.useState();
     const [user, setUser] = React.useState();
 
-    React.useEffect(() => {
+    
+
+    useEffect(() => {
         return onAuthUIStateChange((nextAuthState, authData) => {
 
             setAuthState(nextAuthState);
-            setUser(authData)
+            setUser(authData);
         });
     }, []);
     return authState ===AuthState.SignedIn && user ?(
-        <>
+        // Uncomment the top to show john work
+        // Uncomment bottom to show marty work
+
+        // <>
+        // <ThemeProvider theme={theme}>
+        //     <SideMenu/>
+        //     <div className={classes.appMain}>
+        //         <Header/>
+        //         <FormHead/>
+        //         <AmplifySignOut/>
+        //         <FrontCam/>
+        //     </div>
+        //     <CssBaseline/>
+        //     </ThemeProvider> 
+        // </>
+        
+        <>    
             <VideoPlayer/>
             <div className="App">
                 <AmplifySignOut />
+                <FrontCam/>
             </div>
         </>
     ):(
@@ -81,4 +104,4 @@ const AuthorizeApp = () => {
     );
 }
 
-export default AuthorizeApp;
+export default App;
