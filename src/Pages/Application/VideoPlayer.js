@@ -27,7 +27,7 @@ export default function VideoPlayer() {
  //               url={videos[index]}
             />
             <button onClick={ButtonClicked}>
-                Complete Assessment >>
+                Complete Assessment 
             </button>
         </div>
     ): index !== videos.length ? (
@@ -38,7 +38,7 @@ export default function VideoPlayer() {
 //                url={videos[index]}
             />
             <button onClick={ButtonClicked}>
-                Next Video >>
+                Next Video 
             </button>
         </div>
     ):(
