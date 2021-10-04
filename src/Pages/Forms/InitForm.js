@@ -5,6 +5,8 @@ import RadioButton from "../../controls/RadioButton";
 import DatePicker from "../../controls/DatePicker";
 import {Grid} from "@material-ui/core";
 import Button from "../../controls/Button";
+import axios from "axios";
+
 
 const genderList = [
     {id: 'male', title: 'Male'},
@@ -31,21 +33,23 @@ const initialFValues = {
     age: new Date(),
     disorder: ''
 }
+
+
 export default function InitForm() {
 
     const validate = (fieldValues = values) => {
         let temp = {...errors}
-        if('firstName' in fieldValues)
+        if ('firstName' in fieldValues)
             temp.firstName = fieldValues.firstName ? "" : "This field is required."
-        if('lastName' in fieldValues)
+        if ('lastName' in fieldValues)
             temp.lastName = fieldValues.lastName ? "" : "This field is required."
-        if('email' in fieldValues)
+        if ('email' in fieldValues)
             temp.email = (/$^|.+@.+..+/).test(fieldValues.email) ? "" : "Email is not valid."
         setErrors({
             ...temp
         })
 
-        if(fieldValues === values)
+        if (fieldValues === values)
             return Object.values(temp).every(x => x === "")
     }
 
@@ -63,6 +67,22 @@ export default function InitForm() {
         if (validate())
             window.alert('Submitting Form...')
     }
+
+    //todo: replace with actual api
+    const postData = () => {
+        const url = 'https://eye-tracker.azure-api.net/TestGroup/post'
+        axios.post(url, {values}).then((res) => {
+            console.log(res);
+        })
+    }
+
+//}).catch(error => {
+//      setError(error);
+//    });
+    // }, []);
+
+    // if (error) return `Error: ${error.message}`;
+//  if (!post) return "No post!"
     return (
         <Form onSubmit={handleSubmit}>
             <Grid container>
@@ -126,13 +146,15 @@ export default function InitForm() {
                     />
                     <div>
                         <Button
+                            onClick={postData}
                             type="submit"
-                            text="Submit"/>
+                            text="Submit"
+                        />
                         <Button
                             type="reset"
                             text="Reset"
                             color="default"
-                            onClick = {resetForm}/>
+                            onClick={resetForm}/>
                     </div>
 
                 </Grid>
