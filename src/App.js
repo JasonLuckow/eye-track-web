@@ -11,6 +11,20 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import {AmplifySignOut, AmplifyAuthenticator, AmplifyAuthContainer, AmplifyButton} from '@aws-amplify/ui-react'
+import {AuthState, onAuthUIStateChange} from "@aws-amplify/ui-components";
+import awsconfig from "./aws-exports";
+import SignIn from "./Pages/SignIn/SignIn";
+import "./Pages/SignIn/SignInDesign.css"
+import CreateAccount from "./Pages/SignIn/CreateAccount";
+import VideoPlayer from "./Pages/Application/VideoPlayer"
+import Amplify from "aws-amplify";
+import {useEffect} from 'react';
+import webgazer from 'webgazer';
+import FrontCam from './components/FrontCam';
+
+
+// Amplify.configure(awsconfig);
 
 const theme = createTheme({
     palette: {
@@ -58,6 +72,32 @@ function App() {
                 <Header/>
                 <FormHead/>
                 <AmplifySignOut/>
+            setAuthState(nextAuthState);
+            setUser(authData);
+        });
+    }, []);
+    return authState ===AuthState.SignedIn && user ?(
+        // Uncomment the top to show john work
+        // Uncomment bottom to show marty work
+
+         /*<>
+         <ThemeProvider theme={theme}>
+             <SideMenu/>
+             <div className={classes.appMain}>
+                 <Header/>
+                 <FormHead/>
+                 <AmplifySignOut/>
+                 <FrontCam/>
+             </div>
+             <CssBaseline/>
+             </ThemeProvider>
+         </>*/
+
+        <>
+            <VideoPlayer/>
+            <div className="App">
+                <AmplifySignOut />
+                <FrontCam/>
             </div>
             <CssBaseline/>
         </ThemeProvider>
