@@ -6,7 +6,7 @@ import DatePicker from "../../controls/DatePicker";
 import {Grid} from "@material-ui/core";
 import Button from "../../controls/Button";
 import axios from "axios";
-import Constants from "src/Constants.js"
+import Constants from "../../Constants";
 
 
 const genderList = [

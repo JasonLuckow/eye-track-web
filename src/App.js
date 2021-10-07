@@ -4,7 +4,7 @@ import SideMenu from "./components/SideMenu";
 import Header from "./components/Header";
 import FormHead from "./Pages/Forms/FormHead";
 import {makeStyles, CssBaseline, createTheme, ThemeProvider} from '@material-ui/core';
-import {withAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react'
+import {withAuthenticator} from '@aws-amplify/ui-react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -63,7 +63,6 @@ const useStyles = makeStyles({
 
 
 function App() {
-function App() {
 
     const classes = useStyles()
     const [authState, setAuthState] = React.useState();
@@ -114,4 +113,4 @@ function App() {
     );
 }
 
-export default withAuthenticator(App)}
+export default withAuthenticator(App)
