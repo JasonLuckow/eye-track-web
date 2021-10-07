@@ -63,15 +63,17 @@ const useStyles = makeStyles({
 
 
 function App() {
-    const classes = useStyles();
+function App() {
 
-    return (
-        <ThemeProvider theme={theme}>
-            <SideMenu/>
-            <div className={classes.appMain}>
-                <Header/>
-                <FormHead/>
-                <AmplifySignOut/>
+    const classes = useStyles()
+    const [authState, setAuthState] = React.useState();
+    const [user, setUser] = React.useState();
+
+
+
+    useEffect(() => {
+        return onAuthUIStateChange((nextAuthState, authData) => {
+
             setAuthState(nextAuthState);
             setUser(authData);
         });
@@ -80,18 +82,18 @@ function App() {
         // Uncomment the top to show john work
         // Uncomment bottom to show marty work
 
-         /*<>
-         <ThemeProvider theme={theme}>
-             <SideMenu/>
-             <div className={classes.appMain}>
-                 <Header/>
-                 <FormHead/>
-                 <AmplifySignOut/>
-                 <FrontCam/>
-             </div>
-             <CssBaseline/>
-             </ThemeProvider>
-         </>*/
+        // <>
+        // <ThemeProvider theme={theme}>
+        //     <SideMenu/>
+        //     <div className={classes.appMain}>
+        //         <Header/>
+        //         <FormHead/>
+        //         <AmplifySignOut/>
+        //         <FrontCam/>
+        //     </div>
+        //     <CssBaseline/>
+        //     </ThemeProvider>
+        // </>
 
         <>
             <VideoPlayer/>
@@ -99,9 +101,17 @@ function App() {
                 <AmplifySignOut />
                 <FrontCam/>
             </div>
-            <CssBaseline/>
-        </ThemeProvider>
+        </>
+    ):(
+        <AmplifyAuthContainer>
+            <div className={"SignInDesign"}>
+                <AmplifyAuthenticator>
+                    <CreateAccount/>
+                    <SignIn/>
+                </AmplifyAuthenticator>
+            </div>
+        </AmplifyAuthContainer>
     );
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(App)}

@@ -6,6 +6,7 @@ import DatePicker from "../../controls/DatePicker";
 import {Grid} from "@material-ui/core";
 import Button from "../../controls/Button";
 import axios from "axios";
+import Constants from "src/Constants.js"
 
 
 const genderList = [
@@ -23,15 +24,15 @@ const glassesList = [
 ]
 
 const initialFValues = {
-    id: 0,
+    //id: 0,
     firstName: '',
     lastName: '',
-    email: '',
+    age: new Date(),
     gender: '',
+    disorder: '',
     hand: '',
     glasses: '',
-    age: new Date(),
-    disorder: ''
+    email: '',
 }
 
 
@@ -70,7 +71,7 @@ export default function InitForm() {
 
     //todo: replace with actual api
     const postData = () => {
-        const url = 'https://eye-tracker.azure-api.net/TestGroup/post'
+        const url = Constants.APIRoot + 'TestGroup/post'
         axios.post(url, {values}).then((res) => {
             console.log(res);
         })
