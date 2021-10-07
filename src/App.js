@@ -16,6 +16,7 @@ import {useEffect} from 'react';
 import webgazer from 'webgazer';
 import FrontCam from './components/FrontCam';
 
+
 // Amplify.configure(awsconfig);
 
 const theme = createTheme({
@@ -72,20 +73,20 @@ function App() {
         // Uncomment the top to show john work
         // Uncomment bottom to show marty work
 
-        // <>
-        // <ThemeProvider theme={theme}>
-        //     <SideMenu/>
-        //     <div className={classes.appMain}>
-        //         <Header/>
-        //         <FormHead/>
-        //         <AmplifySignOut/>
-        //         <FrontCam/>
-        //     </div>
-        //     <CssBaseline/>
-        //     </ThemeProvider> 
-        // </>
+         /*<>
+         <ThemeProvider theme={theme}>
+             <SideMenu/>
+             <div className={classes.appMain}>
+                 <Header/>
+                 <FormHead/>
+                 <AmplifySignOut/>
+                 <FrontCam/>
+             </div>
+             <CssBaseline/>
+             </ThemeProvider>
+         </>*/
         
-        <>    
+        <>
             <VideoPlayer/>
             <div className="App">
                 <AmplifySignOut />
