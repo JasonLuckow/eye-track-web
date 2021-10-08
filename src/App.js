@@ -15,6 +15,7 @@ import Amplify from "aws-amplify";
 import {useEffect} from 'react';
 import webgazer from 'webgazer';
 import FrontCam from './components/FrontCam';
+import Callibrate from './Pages/Application/Callibrate';
 
 // Amplify.configure(awsconfig);
 
@@ -85,13 +86,19 @@ function App() {
         //     </ThemeProvider> 
         // </>
         
-        <>    
-            <VideoPlayer/>
-            <div className="App">
-                <AmplifySignOut />
-                <FrontCam/>
+        <>
+            <Callibrate/>
+            <div className = "App">
             </div>
         </>
+
+        // <>    
+        //     <VideoPlayer/>
+        //     <div className="App">
+        //         <AmplifySignOut />
+        //         <FrontCam/>
+        //     </div>
+        // </>
     ):(
         <AmplifyAuthContainer>
             <div className={"SignInDesign"}>
