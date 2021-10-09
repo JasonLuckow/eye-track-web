@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import './App.css';
 import SideMenu from "./components/SideMenu";
@@ -113,4 +114,37 @@ function App() {
     );
 }
 
-export default withAuthenticator(App)
+export default withAuthenticator(App)*/
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Login from '../src/Pages/Amplify/Login';
+import Register from '../src/Pages/Amplify/Register';
+import Home from '../src/Pages/Amplify/Home';
+import ConfirmRegister from '../src/Pages/Amplify/ConfirmRegister';
+//import FormHead from "./Pages/Forms/FormHead";
+import './App.css';
+import './tailwind.generated.css';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Router>
+          <Switch>
+            <Route component={Home} path="/home" />
+            <Route component={ConfirmRegister} path="/confirm-register" />
+            <Route component={Login} path="/log-in" />
+            <Route component={Register} path="/" />
+            {/*<Route component={FormHead} path="form"/>*/}
+          </Switch>
+        </Router>
+      </header>
+    </div>
+  )
+}
+
+export default App
