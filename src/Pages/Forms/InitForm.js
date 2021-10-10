@@ -7,7 +7,7 @@ import {Grid} from "@material-ui/core";
 import Button from "../../controls/Button";
 import axios from "axios";
 import Constants from "../../Constants";
-
+import Key from "../../API/Key";
 
 const genderList = [
     {id: 'male', title: 'Male'},
@@ -68,10 +68,12 @@ export default function InitForm() {
             window.alert('Submitting Form...')
     }
 
-    //todo: replace with actual api
+    //todo: replace with actual api989
     const postData = () => {
         const url = Constants.APIRoot + 'TestGroup/post'
-        axios.post(url, {values}).then((res) => {
+        axios.post(url, {values},{
+            'Ocp-Apim-Subscription-Key': Key.API_KEY
+        }).then((res, ) => {
             console.log(res);
         })
     }

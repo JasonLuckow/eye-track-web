@@ -125,7 +125,7 @@ import Login from '../src/Pages/Amplify/Login';
 import Register from '../src/Pages/Amplify/Register';
 import Home from '../src/Pages/Amplify/Home';
 import ConfirmRegister from '../src/Pages/Amplify/ConfirmRegister';
-//import FormHead from "./Pages/Forms/FormHead";
+import Form from "../src/Pages/Forms/Form";
 import './App.css';
 import './tailwind.generated.css';
 
@@ -138,8 +138,8 @@ function App() {
             <Route component={Home} path="/home" />
             <Route component={ConfirmRegister} path="/confirm-register" />
             <Route component={Login} path="/log-in" />
+            <Route component={Form} path="/form"/>
             <Route component={Register} path="/" />
-            {/*<Route component={FormHead} path="form"/>*/}
           </Switch>
         </Router>
       </header>
