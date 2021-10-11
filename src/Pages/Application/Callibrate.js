@@ -5,17 +5,15 @@
 //Step two: display screen with circles to click
 
 //Step three: change screen color and repeat
-import React from "react";
-import ReactDOM from "react-dom";
+import React, {useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import { grey } from "@material-ui/core/colors";
-import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
-import AddCircle from '@material-ui/icons/AddCircle';
+import Button from "../../controls/Button"; 
+import webgazer from 'webgazer';
+import FrontCam from '../../components/FrontCam';
 
 // watch the video
 // https://react.school/material-ui/paper
@@ -23,19 +21,11 @@ import AddCircle from '@material-ui/icons/AddCircle';
 function GridItem({ classes }) 
 {
     return (
-      // From 0 to 600px wide (smart-phones), I take up 12 columns, or the whole device width!
-      // From 600-690px wide (tablets), I take up 6 out of 12 columns, so 2 columns fit the screen.
-      // From 960px wide and above, I take up 25% of the device (3/12), so 4 columns fit the screen.
       <Grid item xs={12} sm={6} md={3}>
         <Paper className={classes.paper}>item</Paper>
       </Grid>
     );
 }
-
-
-
-
-
 
 const useStyles = makeStyles((theme) => 
 ({
@@ -60,48 +50,560 @@ const useStyles = makeStyles((theme) =>
 
 export default function Callibrate() 
 {
-
+  
   const classes = useStyles();
-  var curr=0;
+  const [index, setIndex] = useState(0);
+  const [fill1, setFill1] = useState(true);
+  const xCoor  = [];
+  const yCoor = [];
 
-  function ButtonClicked()
-    {  
-        if (curr < 6)
-        {
-            return curr + 1;
-        }
-        else
-        {
-            <Button
-                    type="submit"
-                    size = "large"
-                    variant="contained"
-                    color="primary"
-                    className={classes.submit}
-                    disabled>
-                    done
-            </Button> 
-        }  
-    }   
-  return (
+  const ButtonClicked = () => 
+  {
+    setIndex(index+1);
+    count = count +1;
+    setFill1(!fill1);
+    // var prediction = webgazer.getCurrentPrediction();
+    // if (prediction) 
+    // {
+    //     xCoor[count,1] = prediction.x;
+    //     yCoor[count,1]= prediction.y;
+    // } 
+  }
+
+
+  const ButtonSelected1 = () => {setFill1(!fill1);}
+  var count = 0;
+
+  return index < 5 ?
+  (
     <div className={classes.root}>
-        <Paper className={classes.blackPaper}> 
-            <Grid container>
-                <Grid item xs={12} style={{backgroundColor: '#000'}}>
-                    
-                    <Button
-                    type="submit"
-                    size = "large"
-                    variant="contained"
-                    color="primary"
-                    className={classes.submit}
-                    onClick = {ButtonClicked()}>
-                    press
-                    </Button> 
-                       
-                </Grid>
-            </Grid>
+        <Paper className={classes.greyPaper}> 
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 350, top:100}}/>   
+          <div className="Question-text">
+            <h1>Click button 5 times</h1>
+            
+            {index}
+            {count}
+            {/* {xCoor}
+            {yCoor} */}
+          </div>
         </Paper>
     </div>
-  );
+
+  ):index <= 10 ?
+  (
+    <div className={classes.root}>
+      count = 0;
+      <Paper className={classes.greyPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 500, top:100}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 15 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.greyPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 900, top:100}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 20 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.greyPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:100}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 25 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.greyPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 100, top:300}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 30 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.greyPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 500, top:300}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 35 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.greyPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 900, top:300}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 40 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.greyPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:300}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <=45?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.greyPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 100, top:500}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 50 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.greyPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 500, top:500}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 55 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.greyPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 900, top:500}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 60 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.greyPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:500}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 65 ?
+  (
+    <div className={classes.root}>
+        <Paper className={classes.whitePaper}> 
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 350, top:100}}/>     
+          <div className="Question-text">
+            <h1>Click button 5 times</h1>
+            {index}
+          </div>
+        </Paper>
+    </div>
+
+  ):index <= 70 ?
+  (
+    <div className={classes.root}>
+        <Paper className={classes.whitePaper}>   
+        <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 500, top:100}}/>
+        </Paper>
+    </div>
+
+  )
+  :index <= 75 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.whitePaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 900, top:100}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 80 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.whitePaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:100}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 85 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.whitePaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 100, top:300}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 90 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.whitePaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 500, top:300}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 95 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.whitePaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 900, top:300}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 100 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.whitePaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:300}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <=105?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.whitePaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 100, top:500}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 110 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.whitePaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 500, top:500}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 115 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.whitePaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 900, top:500}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 120 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.whitePaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:500}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 125 ?
+  (
+    <div className={classes.root}>
+        <Paper className={classes.blackPaper}> 
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 350, top:100}}/>     
+          <div className="Question-text">
+            {/* <h1 style={{ color: '0xfff' }}>Click button 5 times</h1> */}
+            {index}
+          </div>
+        </Paper>
+    </div>
+
+  ):index <= 130 ?
+  (
+    <div className={classes.root}>
+        <Paper className={classes.blackPaper}>   
+        <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 500, top:100}}/>
+        </Paper>
+    </div>
+
+  ):index <= 135 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.blackPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 500, top:100}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 140 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.blackPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 900, top:100}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 145 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.blackPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:100}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 150 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.blackPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 100, top:300}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 155 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.blackPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 500, top:300}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 160 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.blackPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 900, top:300}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 165 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.blackPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:300}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <=170?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.blackPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 100, top:500}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 175 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.blackPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 500, top:500}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 180 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.blackPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 900, top:500}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :index <= 185 ?
+  (
+    <div className={classes.root}>
+      <Paper className={classes.blackPaper}> 
+          <Grid container>
+          <Button variant={fill1 ? "outlined" : "contained"} 
+            size="small" 
+            text="Shape 2" 
+            onClick={ButtonClicked} 
+            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:500}}/>
+          </Grid>
+      </Paper>
+    </div>
+  )
+  :
+  (
+    <div className={classes.root}>
+      <h1>Now Move Onto Actual Test</h1>
+    </div>
+  )
 }
