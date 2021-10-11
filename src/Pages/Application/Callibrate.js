@@ -12,8 +12,6 @@ import Paper from "@material-ui/core/Paper";
 import { grey } from "@material-ui/core/colors";
 import Grid from "@material-ui/core/Grid";
 import Button from "../../controls/Button"; 
-import webgazer from 'webgazer';
-import FrontCam from '../../components/FrontCam';
 
 // watch the video
 // https://react.school/material-ui/paper
@@ -54,25 +52,12 @@ export default function Callibrate()
   const classes = useStyles();
   const [index, setIndex] = useState(0);
   const [fill1, setFill1] = useState(true);
-  const xCoor  = [];
-  const yCoor = [];
 
   const ButtonClicked = () => 
   {
     setIndex(index+1);
-    count = count +1;
     setFill1(!fill1);
-    // var prediction = webgazer.getCurrentPrediction();
-    // if (prediction) 
-    // {
-    //     xCoor[count,1] = prediction.x;
-    //     yCoor[count,1]= prediction.y;
-    // } 
   }
-
-
-  const ButtonSelected1 = () => {setFill1(!fill1);}
-  var count = 0;
 
   return index < 5 ?
   (
@@ -80,24 +65,18 @@ export default function Callibrate()
         <Paper className={classes.greyPaper}> 
           <Button variant={fill1 ? "outlined" : "contained"} 
             size="small" 
-            text="Shape 2" 
+            text="Click" 
             onClick={ButtonClicked} 
             style={{width: 30, height: 30, position: 'absolute', left: 350, top:100}}/>   
           <div className="Question-text">
-            <h1>Click button 5 times</h1>
-            
-            {index}
-            {count}
-            {/* {xCoor}
-            {yCoor} */}
+            <h1 style={{ color: 'black' }}>Click Button 5 Times and Make Sure Face Stays in Green Box</h1>
           </div>
         </Paper>
     </div>
 
-  ):index <= 10 ?
+  ):index < 10 ?
   (
     <div className={classes.root}>
-      count = 0;
       <Paper className={classes.greyPaper}> 
           <Grid container>
           <Button variant={fill1 ? "outlined" : "contained"} 
@@ -109,7 +88,7 @@ export default function Callibrate()
       </Paper>
     </div>
   )
-  :index <= 15 ?
+  :index < 15 ?
   (
     <div className={classes.root}>
       <Paper className={classes.greyPaper}> 
@@ -123,7 +102,7 @@ export default function Callibrate()
       </Paper>
     </div>
   )
-  :index <= 20 ?
+  :index < 20 ?
   (
     <div className={classes.root}>
       <Paper className={classes.greyPaper}> 
@@ -137,7 +116,7 @@ export default function Callibrate()
       </Paper>
     </div>
   )
-  :index <= 25 ?
+  :index < 25 ?
   (
     <div className={classes.root}>
       <Paper className={classes.greyPaper}> 
@@ -428,7 +407,7 @@ export default function Callibrate()
             onClick={ButtonClicked} 
             style={{width: 30, height: 30, position: 'absolute', left: 350, top:100}}/>     
           <div className="Question-text">
-            {/* <h1 style={{ color: '0xfff' }}>Click button 5 times</h1> */}
+            <h1 style={{ color: 'red' }}> Click button 5 times</h1>
             {index}
           </div>
         </Paper>
@@ -446,21 +425,8 @@ export default function Callibrate()
         </Paper>
     </div>
 
-  ):index <= 135 ?
-  (
-    <div className={classes.root}>
-      <Paper className={classes.blackPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 500, top:100}}/>
-          </Grid>
-      </Paper>
-    </div>
   )
-  :index <= 140 ?
+  :index <= 135 ?
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
@@ -474,7 +440,7 @@ export default function Callibrate()
       </Paper>
     </div>
   )
-  :index <= 145 ?
+  :index <= 140 ?
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
@@ -488,7 +454,7 @@ export default function Callibrate()
       </Paper>
     </div>
   )
-  :index <= 150 ?
+  :index <= 145 ?
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
@@ -502,7 +468,7 @@ export default function Callibrate()
       </Paper>
     </div>
   )
-  :index <= 155 ?
+  :index <= 150 ?
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
@@ -516,7 +482,7 @@ export default function Callibrate()
       </Paper>
     </div>
   )
-  :index <= 160 ?
+  :index <= 155 ?
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
@@ -530,7 +496,7 @@ export default function Callibrate()
       </Paper>
     </div>
   )
-  :index <= 165 ?
+  :index <= 160 ?
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
@@ -544,7 +510,7 @@ export default function Callibrate()
       </Paper>
     </div>
   )
-  :index <=170?
+  :index <=165?
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
@@ -558,7 +524,7 @@ export default function Callibrate()
       </Paper>
     </div>
   )
-  :index <= 175 ?
+  :index <= 170 ?
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
@@ -572,7 +538,7 @@ export default function Callibrate()
       </Paper>
     </div>
   )
-  :index <= 180 ?
+  :index <= 175 ?
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
@@ -586,7 +552,7 @@ export default function Callibrate()
       </Paper>
     </div>
   )
-  :index <= 185 ?
+  :index <= 180 ?
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
