@@ -10,17 +10,16 @@ export default function CSV() {
     var ypredition;
     var eyeLocation;
     var csvRows = [];
+    var eyeArray = [];
 
     const TEST = [{xCoordinate: "xTest", yCoordinate: "yTest"},{xCoordinate: "xTest", yCoordinate: "yTest"},{xCoordinate: "xTest", yCoordinate: "yTest"},{xCoordinate: "xTest", yCoordinate: "yTest"}];
-
-    const data = csvRows;
-
-    const headers = [{label: "xCoordinate", key: "xCoordinate"}, {label: "yCoordinate", key: "yCoordinate"}];
+    const TestArray = [[1,2],[3,4],[5,6]]
+    const headers = ["xCoordinate","yCoordinate"];
 
     const csvReport = {
         filename: 'Report.csv',
         headers: headers,
-        data: TEST
+        data: TestArray
     };
 
     useEffect(() => {
@@ -28,13 +27,14 @@ export default function CSV() {
             if (data == null) {
                 return;
             }
-            //xpredition = data.x;
-            //ypredition = data.y;
-            xpredition = 'xTEST';
-            ypredition = 'yTEST';
-            eyeLocation = {xCoordinate: xpredition, yCoordinate: ypredition};
+            xpredition = data.x;
+            ypredition = data.y;
+            //xpredition = 'xTEST';
+            //ypredition = 'yTEST';
+            eyeArray = [xpredition.toString(),ypredition.toString()]
+            eyeLocation = {xCoordinate: xpredition.toString(), yCoordinate: ypredition.toString()};
             //console.log(eyeLocation);
-            csvRows.push(eyeLocation);
+            csvRows.push(eyeArray);
             // console.log("Eye Location: " + eyeLocation);
             console.log(csvRows);
         }).begin();
