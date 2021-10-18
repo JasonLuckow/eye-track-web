@@ -1,5 +1,8 @@
 .SignInDesign{
     display: flex;
+    position: absolute;
+    height: 100%;
+    width: 100%;
     background-image: url(../../Images/EyeTracking.jpg);
     background-size: contain;
     background-repeat: no-repeat;
