@@ -7,7 +7,8 @@ import {Grid} from "@material-ui/core";
 import Button from "../../controls/Button";
 import axios from "axios";
 import Constants from "../../Constants";
-
+import Key from "../../API/Key";
+import {Auth} from "aws-amplify";
 
 const genderList = [
     {id: 'male', title: 'Male'},
@@ -25,14 +26,14 @@ const glassesList = [
 
 const initialFValues = {
     //id: 0,
-    firstName: '',
-    lastName: '',
-    age: new Date(),
-    gender: '',
-    disorder: '',
-    hand: '',
-    glasses: '',
-    email: '',
+    FirstName: '',
+    LastName: '',
+    DOB: new Date(),
+    SEX: '',
+    DisorderDisability: '',
+    Hand: '',
+    Glasses: '',
+    // email: '',
 }
 
 
@@ -40,12 +41,10 @@ export default function InitForm() {
 
     const validate = (fieldValues = values) => {
         let temp = {...errors}
-        if ('firstName' in fieldValues)
-            temp.firstName = fieldValues.firstName ? "" : "This field is required."
-        if ('lastName' in fieldValues)
-            temp.lastName = fieldValues.lastName ? "" : "This field is required."
-        if ('email' in fieldValues)
-            temp.email = (/$^|.+@.+..+/).test(fieldValues.email) ? "" : "Email is not valid."
+        if ('FirstName' in fieldValues)
+            temp.FirstName = fieldValues.FirstName ? "" : "This field is required."
+        if ('LastName' in fieldValues)
+            temp.LastName = fieldValues.LastName ? "" : "This field is required."
         setErrors({
             ...temp
         })
@@ -56,7 +55,6 @@ export default function InitForm() {
 
     const {
         values,
-        setValues,
         errors,
         setErrors,
         handleInputChange,
@@ -69,13 +67,46 @@ export default function InitForm() {
             window.alert('Submitting Form...')
     }
 
-    //todo: replace with actual api
+    //todo: replace with actual api989
     const postData = () => {
-        const url = Constants.APIRoot + 'TestGroup/post'
-        axios.post(url, {values}).then((res) => {
-            console.log(res);
-        })
+        const url = Constants.APIRoot + "TestGroup/post"
+        axios.post(url, {
+            FirstName: values.FirstName, LastName: values.LastName, DOB: values.DOB, SEX: values.SEX,
+            DisorderDisability: values.DisorderDisability, Hand: values.Hand, Glasses: values.Glasses
+        }).then((res,) => {
+                console.log(res);
+            }
+        )
     }
+    const getData = () => {
+        const url = Constants.APIRoot + "TestGroup/get"
+        axios.get(url, {
+            FirstName: values.FirstName, LastName: values.LastName, DOB: values.DOB, SEX: values.SEX,
+            DisorderDisability: values.DisorderDisability, Hand: values.Hand, Glasses: values.Glasses
+        }).then((res,) => {
+                console.log(res);
+            }
+        )
+    }
+
+    //todo: test get request
+    const getValues = async () => {
+        try {
+            await Auth.signIn({
+                FirstName: values.FirstName,
+                LastName: values.LastName,
+                DOB: values.DOB,
+                SEX: values.SEX,
+                DisorderDisability: values.DisorderDisability,
+                Hand: values.Hand,
+                Glasses: values.Glasses,
+            });
+        } catch (error) {
+            console.error('error', error);
+
+        }
+    }
+
 
 //}).catch(error => {
 //      setError(error);
@@ -89,60 +120,53 @@ export default function InitForm() {
             <Grid container>
                 <Grid item xs={6}>
                     <Input
-                        name="firstName"
+                        name="FirstName"
                         label="First Name"
-                        value={values.firstName}
+                        value={values.FirstName}
                         onChange={handleInputChange}
-                        error={errors.firstName}
+                        error={errors.FirstName}
                     />
                     <Input
-                        name="lastName"
+                        name="LastName"
                         label="Last Name"
-                        value={values.lastName}
+                        value={values.LastName}
                         onChange={handleInputChange}
-                        error={errors.lastName}
+                        error={errors.LastName}
                     />
                     <Input
-                        name="email"
-                        label="Email"
-                        value={values.email}
-                        onChange={handleInputChange}
-                    />
-
-                    <Input
-                        name="disorder"
+                        name="DisorderDisability"
                         label="Disorders"
-                        value={values.disorder}
+                        value={values.DisorderDisability}
                         onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={6}>
                     <RadioButton
-                        name="gender"
+                        name="SEX"
                         label="Gender"
-                        value={values.gender}
+                        value={values.SEX}
                         onChange={handleInputChange}
                         items={genderList}
                     />
                     <RadioButton
-                        name="hand"
+                        name="Hand"
                         label="Dominant Hand:"
-                        value={values.hand}
+                        value={values.Hand}
                         onChange={handleInputChange}
                         items={handList}
                     />
 
                     <RadioButton
-                        name="glasses"
-                        label="Do you wear glasses?"
-                        value={values.glasses}
+                        name="Glasses"
+                        label="Do you wear Glasses?"
+                        value={values.Glasses}
                         onChange={handleInputChange}
                         items={glassesList}
                     />
                     <DatePicker
-                        name="age"
+                        name="DOB"
                         label="Date of Birth"
-                        value={values.age}
+                        value={values.DOB}
                         onChange={handleInputChange}
                     />
                     <div>

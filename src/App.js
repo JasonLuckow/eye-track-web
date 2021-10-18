@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import './App.css';
 import SideMenu from "./components/SideMenu";
@@ -95,5 +96,41 @@ function App(){
     )
 }
 
+export default withAuthenticator(App)*/
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route, HashRouter,
+} from "react-router-dom";
+import Login from '../src/Pages/Amplify/Login';
+import Register from '../src/Pages/Amplify/Register';
+import Home from '../src/Pages/Amplify/Home';
+import ConfirmRegister from '../src/Pages/Amplify/ConfirmRegister';
+import Form from "../src/Pages/Forms/Form";
+import './App.css';
+import './tailwind.generated.css';
+import VideoPlayer from '../src/Pages/Application/VideoPlayer';
+import ProtectedRoute from './components/ProtectedRoute';
 
-export default App;
+function App() {
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Router>
+          <Switch>
+            <Route component={Home} path="/home" />
+            <Route component={ConfirmRegister} path="/confirm-register" />
+            <Route component={Login} path="/log-in" />
+            <ProtectedRoute component={Form} exact path="/form"/>
+            <Route component={VideoPlayer} path="/test" />
+            <Route component={Register} path="/" />
+          </Switch>
+        </Router>
+      </header>
+    </div>
+  )
+}
+
+export default App
