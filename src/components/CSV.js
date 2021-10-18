@@ -19,7 +19,7 @@ export default function CSV() {
     const csvReport = {
         filename: 'Report.csv',
         headers: headers,
-        data: TestArray
+        data: csvRows
     };
 
     useEffect(() => {
@@ -41,7 +41,7 @@ export default function CSV() {
     }, []);
     return (
         <div>
-            <CSVLink {...csvReport}>Export to CSV</CSVLink>
+            <CSV {...csvReport}>Export to CSV</CSV>
         </div>
     )
 }
