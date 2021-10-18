@@ -128,9 +128,11 @@ import ConfirmRegister from '../src/Pages/Amplify/ConfirmRegister';
 import Form from "../src/Pages/Forms/Form";
 import './App.css';
 import './tailwind.generated.css';
-import ProtectedRoute from './ProtectedRoute'
+import VideoPlayer from '../src/Pages/Application/VideoPlayer';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
@@ -139,8 +141,8 @@ function App() {
             <Route component={Home} path="/home" />
             <Route component={ConfirmRegister} path="/confirm-register" />
             <Route component={Login} path="/log-in" />
-            <Route component = {ProtectedRoute} path = "/protected"/>
-            <Route component={Form} path="/form"/>
+            <ProtectedRoute component={Form} exact path="/form"/>
+            <Route component={VideoPlayer} path="/test" />
             <Route component={Register} path="/" />
           </Switch>
         </Router>
