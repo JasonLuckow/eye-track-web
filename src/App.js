@@ -16,6 +16,7 @@ import {useEffect} from 'react';
 import webgazer from 'webgazer';
 import FrontCam from './components/FrontCam';
 import Callibrate from './Pages/Application/Callibrate';
+import CSV from './components/CSV';
 
 const theme = createTheme({
 
@@ -88,8 +89,7 @@ function App(){
         <ThemeProvider theme={theme}>
         <Callibrate/>
             <div className="App">
-                <AmplifySignOut/>
-                <FrontCam/>
+                <CSV/>
             </div>
         </ThemeProvider>
     )
