@@ -4,6 +4,9 @@ import {makeStyles, CssBaseline, createTheme, ThemeProvider} from '@material-ui/
 import SideMenu from "../../components/SideMenu";
 import Header from "../../components/Header";
 import {withAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react'
+import Amplify from "aws-amplify";
+
+
 
 
 const theme = createTheme({
@@ -29,7 +32,7 @@ const theme = createTheme({
     },
     props: {
         MuiIconButton: {
-            disableRipple: true
+            disableRipple: false
         }
     }
 })
@@ -49,7 +52,7 @@ function Form() {
             <ThemeProvider theme={theme}>
                 <SideMenu/>
                 <div className={classes.appMain}>
-                    <Header/>
+                    <Header dark/>
                     <FormHead/>
                     <AmplifySignOut/>
                 </div>

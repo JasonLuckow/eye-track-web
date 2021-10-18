@@ -8,6 +8,7 @@ import Button from "../../controls/Button";
 import axios from "axios";
 import Constants from "../../Constants";
 import Key from "../../API/Key";
+import {Auth} from "aws-amplify";
 
 const genderList = [
     {id: 'male', title: 'Male'},
@@ -32,7 +33,7 @@ const initialFValues = {
     DisorderDisability: '',
     Hand: '',
     Glasses: '',
-   // email: '',
+    // email: '',
 }
 
 
@@ -69,13 +70,43 @@ export default function InitForm() {
     //todo: replace with actual api989
     const postData = () => {
         const url = Constants.APIRoot + "TestGroup/post"
-        axios.post(url, {FirstName:values.FirstName, LastName: values.LastName, DOB: values.DOB, SEX: values.SEX,
-        DisorderDisability: values.DisorderDisability, Hand: values.Hand, Glasses: values.Glasses }).then((res, ) => {
-            console.log(res);
-        }
-
+        axios.post(url, {
+            FirstName: values.FirstName, LastName: values.LastName, DOB: values.DOB, SEX: values.SEX,
+            DisorderDisability: values.DisorderDisability, Hand: values.Hand, Glasses: values.Glasses
+        }).then((res,) => {
+                console.log(res);
+            }
         )
     }
+    const getData = () => {
+        const url = Constants.APIRoot + "TestGroup/get"
+        axios.get(url, {
+            FirstName: values.FirstName, LastName: values.LastName, DOB: values.DOB, SEX: values.SEX,
+            DisorderDisability: values.DisorderDisability, Hand: values.Hand, Glasses: values.Glasses
+        }).then((res,) => {
+                console.log(res);
+            }
+        )
+    }
+
+
+    const getValues = async () => {
+        try {
+            await Auth.signIn({
+                FirstName: values.FirstName,
+                LastName: values.LastName,
+                DOB: values.DOB,
+                SEX: values.SEX,
+                DisorderDisability: values.DisorderDisability,
+                Hand: values.Hand,
+                Glasses: values.Glasses,
+            });
+        } catch (error) {
+            console.error('error', error);
+
+        }
+    }
+
 
 //}).catch(error => {
 //      setError(error);

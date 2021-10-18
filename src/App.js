@@ -119,7 +119,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
+  Route, HashRouter,
 } from "react-router-dom";
 import Login from '../src/Pages/Amplify/Login';
 import Register from '../src/Pages/Amplify/Register';
@@ -128,6 +128,7 @@ import ConfirmRegister from '../src/Pages/Amplify/ConfirmRegister';
 import Form from "../src/Pages/Forms/Form";
 import './App.css';
 import './tailwind.generated.css';
+import ProtectedRoute from './ProtectedRoute'
 
 function App() {
   return (
@@ -138,6 +139,7 @@ function App() {
             <Route component={Home} path="/home" />
             <Route component={ConfirmRegister} path="/confirm-register" />
             <Route component={Login} path="/log-in" />
+            <Route component = {ProtectedRoute} path = "/protected"/>
             <Route component={Form} path="/form"/>
             <Route component={Register} path="/" />
           </Switch>
