@@ -142,8 +142,8 @@ function App() {
             <Route component={ConfirmRegister} path="/confirm-register" />
             <Route component={Login} path="/log-in" />
             <ProtectedRoute component={Form} exact path="/form"/>
-            <Route component={Register} path="/" />
             <Route component={VideoPlayer} path="/test" />
+            <Route component={Register} path="/" />   
           </Switch>
         </Router>
       </header>
