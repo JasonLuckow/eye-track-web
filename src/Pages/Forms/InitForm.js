@@ -7,7 +7,7 @@ import {Grid} from "@material-ui/core";
 import Button from "../../controls/Button";
 import axios from "axios";
 import Constants from "../../Constants";
-import Key from "../../API/Key";
+// import Key from "../../API/Key";
 import {Auth} from "aws-amplify";
 
 const genderList = [
