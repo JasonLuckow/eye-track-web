@@ -19,6 +19,7 @@ const LogIn = () => {
         username: user.username,
         password: user.password,
       });
+      localStorage.setItem("isAuthenticated", "true");
       history.push('./form')
     } catch (error) {
       console.error('error', error);
