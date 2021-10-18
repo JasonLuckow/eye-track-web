@@ -8,13 +8,18 @@
 import React, {useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-// import Button from "@material-ui/core/Button";
-import { grey } from "@material-ui/core/colors";
 import Grid from "@material-ui/core/Grid";
 import Button from "../../controls/Button"; 
+import { Typography } from "@material-ui/core";
+import {ThemeProvider, createTheme} from "@material-ui/core/styles"
+import CallibrateButton from "../../controls/CallibrateButton";
+import CallibrateTypography from "../../controls/CallibrateTypography";
 
 // watch the video
 // https://react.school/material-ui/paper
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,300&display=swap');
+</style>
 
 function GridItem({ classes }) 
 {
@@ -24,6 +29,15 @@ function GridItem({ classes })
       </Grid>
     );
 }
+
+
+const theme = createTheme({
+  typography:{
+    fontFamily: [
+        'Robot', 'Mono'
+    ].join(','),
+  },
+}); 
 
 const useStyles = makeStyles((theme) => 
 ({
@@ -38,7 +52,7 @@ const useStyles = makeStyles((theme) =>
       backgroundColor: '#fff'
     },
     greyPaper: {
-        backgroundColor: grey[500]
+        backgroundColor: '#777'
       },
     blackPaper: {
         backgroundColor: '#000'
@@ -63,14 +77,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
         <Paper className={classes.greyPaper}> 
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Click" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 350, top:100}}/>   
-          <div className="Question-text">
-            <h1 style={{ color: 'black' }}>Click Button 5 Times and Make Sure Face Stays in Green Box</h1>
-          </div>
+          <CallibrateButton onClick={ButtonClicked}/>
+          <CallibrateTypography/>
         </Paper>
     </div>
 
@@ -78,55 +86,35 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.greyPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 500, top:100}}/>
-          </Grid>
+          <CallibrateButton width = {30} height = {30} left = {650} top = {100} onClick={ButtonClicked}/>
+          <CallibrateTypography/>
       </Paper>
     </div>
   )
   :index < 15 ?
   (
     <div className={classes.root}>
-      <Paper className={classes.greyPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 900, top:100}}/>
-          </Grid>
+      <Paper className={classes.greyPaper}>
+          <CallibrateButton width = {30} height = {30} left = {900} top = {100} onClick={ButtonClicked}/>
+          <CallibrateTypography/>
       </Paper>
     </div>
   )
   :index < 20 ?
   (
     <div className={classes.root}>
-      <Paper className={classes.greyPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:100}}/>
-          </Grid>
+      <Paper className={classes.greyPaper}>
+        <CallibrateButton width = {30} height = {30} left = {1300} top = {100} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
   :index < 25 ?
   (
     <div className={classes.root}>
-      <Paper className={classes.greyPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 100, top:300}}/>
-          </Grid>
+      <Paper className={classes.greyPaper}>
+        <CallibrateButton width = {30} height = {30} left = {100} top = {300} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -134,55 +122,35 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.greyPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 500, top:300}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {500} top = {300} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
   :index <= 35 ?
   (
     <div className={classes.root}>
-      <Paper className={classes.greyPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 900, top:300}}/>
-          </Grid>
+      <Paper className={classes.greyPaper}>
+        <CallibrateButton width = {30} height = {30} left = {900} top = {300} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
   :index <= 40 ?
   (
     <div className={classes.root}>
-      <Paper className={classes.greyPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:300}}/>
-          </Grid>
+      <Paper className={classes.greyPaper}>
+        <CallibrateButton width = {30} height = {30} left = {1300} top = {300} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
   :index <=45?
   (
     <div className={classes.root}>
-      <Paper className={classes.greyPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 100, top:500}}/>
-          </Grid>
+      <Paper className={classes.greyPaper}>
+        <CallibrateButton width = {30} height = {30} left = {100} top = {500} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -190,13 +158,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.greyPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 500, top:500}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {500} top = {500} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -204,13 +167,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.greyPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 900, top:500}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {900} top = {500} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -218,13 +176,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.greyPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:500}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {1300} top = {500} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -232,15 +185,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
         <Paper className={classes.whitePaper}> 
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 350, top:100}}/>     
-          <div className="Question-text">
-            <h1>Click button 5 times</h1>
-            {index}
-          </div>
+          <CallibrateButton onClick={ButtonClicked}/>
+          <CallibrateTypography/>
         </Paper>
     </div>
 
@@ -248,11 +194,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
         <Paper className={classes.whitePaper}>   
-        <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 500, top:100}}/>
+          <CallibrateButton width = {30} height = {30} left = {650} top = {100} onClick={ButtonClicked}/>
+          <CallibrateTypography/>
         </Paper>
     </div>
 
@@ -261,13 +204,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.whitePaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 900, top:100}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {900} top = {100} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -275,13 +213,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.whitePaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:100}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {1300} top = {100} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -289,13 +222,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.whitePaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 100, top:300}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {100} top = {300} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -303,13 +231,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.whitePaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 500, top:300}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {500} top = {300} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -317,13 +240,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.whitePaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 900, top:300}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {900} top = {300} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -331,13 +249,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.whitePaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:300}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {1300} top = {300} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -345,13 +258,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.whitePaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 100, top:500}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {100} top = {500} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -359,13 +267,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.whitePaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 500, top:500}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {500} top = {500} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -373,13 +276,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.whitePaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 900, top:500}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {900} top = {500} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -387,13 +285,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.whitePaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:500}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {1300} top = {500} onClick={ButtonClicked}/>
+        <CallibrateTypography/>
       </Paper>
     </div>
   )
@@ -401,28 +294,18 @@ export default function Callibrate()
   (
     <div className={classes.root}>
         <Paper className={classes.blackPaper}> 
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 350, top:100}}/>     
-          <div className="Question-text">
-            <h1 style={{ color: 'red' }}> Click button 5 times</h1>
-            {index}
-          </div>
+          <CallibrateButton onClick={ButtonClicked}/>
+          <CallibrateTypography color = 'white'/>
         </Paper>
     </div>
 
   ):index <= 130 ?
   (
     <div className={classes.root}>
-        <Paper className={classes.blackPaper}>   
-        <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 500, top:100}}/>
-        </Paper>
+      <Paper className={classes.blackPaper}> 
+        <CallibrateButton width = {30} height = {30} left = {650} top = {100} onClick={ButtonClicked}/>
+        <CallibrateTypography color = 'white'/>
+      </Paper>
     </div>
 
   )
@@ -430,13 +313,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 900, top:100}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {900} top = {100} onClick={ButtonClicked}/>
+        <CallibrateTypography color = 'white'/>
       </Paper>
     </div>
   )
@@ -444,13 +322,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:100}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {1300} top = {100} onClick={ButtonClicked}/>
+        <CallibrateTypography color = 'white'/>
       </Paper>
     </div>
   )
@@ -458,13 +331,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 100, top:300}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {100} top = {300} onClick={ButtonClicked}/>
+        <CallibrateTypography color = 'white'/>
       </Paper>
     </div>
   )
@@ -472,13 +340,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 500, top:300}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {500} top = {300} onClick={ButtonClicked}/>
+        <CallibrateTypography color = 'white'/>
       </Paper>
     </div>
   )
@@ -486,13 +349,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 900, top:300}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {900} top = {300} onClick={ButtonClicked}/>
+        <CallibrateTypography color = 'white'/>
       </Paper>
     </div>
   )
@@ -500,13 +358,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:300}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {1300} top = {300} onClick={ButtonClicked}/>
+        <CallibrateTypography color = 'white'/>
       </Paper>
     </div>
   )
@@ -514,13 +367,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 100, top:500}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {100} top = {500} onClick={ButtonClicked}/>
+        <CallibrateTypography color = 'white'/>
       </Paper>
     </div>
   )
@@ -528,13 +376,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 500, top:500}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {500} top = {500} onClick={ButtonClicked}/>
+        <CallibrateTypography color = 'white'/>
       </Paper>
     </div>
   )
@@ -542,13 +385,8 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 900, top:500}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {900} top = {500} onClick={ButtonClicked}/>
+        <CallibrateTypography color = 'white'/>
       </Paper>
     </div>
   )
@@ -556,20 +394,21 @@ export default function Callibrate()
   (
     <div className={classes.root}>
       <Paper className={classes.blackPaper}> 
-          <Grid container>
-          <Button variant={fill1 ? "outlined" : "contained"} 
-            size="small" 
-            text="Shape 2" 
-            onClick={ButtonClicked} 
-            style={{width: 30, height: 30, position: 'absolute', left: 1300, top:500}}/>
-          </Grid>
+        <CallibrateButton width = {30} height = {30} left = {1300} top = {500} onClick={ButtonClicked}/>
+        <CallibrateTypography color = 'white'/>
       </Paper>
     </div>
   )
   :
   (
-    <div className={classes.root}>
-      <h1>Now Move Onto Actual Test</h1>
+    <div className = {classes.root}>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Typography variant = "h2">
+          <h1 style={{fontSize: '2rem', color: 'black' , position: 'absolute', left: 650, top:0}}> Move Onto Actual Test</h1>
+        </Typography>
+      </div>
+    </ThemeProvider>
     </div>
   )
 }
