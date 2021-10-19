@@ -112,6 +112,7 @@ import './App.css';
 import './tailwind.generated.css';
 import VideoPlayer from '../src/Pages/Application/VideoPlayer';
 import ProtectedRoute from './components/ProtectedRoute';
+import Callibrate from './Pages/Application/Callibrate'
 
 function App() {
 
@@ -124,7 +125,8 @@ function App() {
             <Route component={ConfirmRegister} path="/confirm-register" />
             <Route component={Login} path="/log-in" />
             <ProtectedRoute component={Form} exact path="/form"/>
-            <Route component={VideoPlayer} path="/test" />
+            <ProtectedRoute component={VideoPlayer} exact path="/test-page" />
+            <ProtectedRoute component={Callibrate} exact path='/callibrate' />
             <Route component={Register} path="/" />
           </Switch>
         </Router>
