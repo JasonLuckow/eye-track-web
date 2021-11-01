@@ -78,7 +78,15 @@ export default function Callibrate()
 
   return index < 5 ?
   (
-    <>      
+    <>    
+    <FrontCam/>
+    <Popup
+        ButtonText = "Understood"
+        title = "Recommendations"
+    >
+        <RecommendedSetup/>
+        <StepsToFollow/>
+    </Popup>  
     <div className={classes.root}>
         <Paper className={classes.greyPaper}> 
           
