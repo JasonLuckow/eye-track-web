@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) =>
     root: {
       "& > *": {
         margin: theme.spacing(0),
-        width: theme.spacing(window.Width),
+        width: theme.spacing(window.innerWidth),
         height: theme.spacing(window.innerHeight)
       }
     },
@@ -77,26 +77,22 @@ export default function Callibrate()
   }
 
   return index < 5 ?
-  (
-    <>    
-    <FrontCam/>
-    <Popup
-        ButtonText = "Understood"
-        title = "Recommendations"
-    >
-        <RecommendedSetup/>
-        <StepsToFollow/>
-    </Popup>  
+  (    
     <div className={classes.root}>
+        <FrontCam/>
+        <Popup
+            ButtonText = "Understood"
+            title = "Recommendations"
+        >
+            <RecommendedSetup/>
+            <StepsToFollow/>
+          </Popup>
         <Paper className={classes.greyPaper}> 
           
           <CallibrateButton onClick={ButtonClicked}/>
           <CallibrateTypography/>
         </Paper>
     </div>
-    
-    
-    </>
 
   ):index < 10 ?
   (
