@@ -113,7 +113,7 @@ import './tailwind.generated.css';
 import TestPage from './Pages/Application/TestPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Callibrate from './Pages/Application/Callibrate'
-import FrontCam from '../../components/FrontCam';
+import FrontCam from './components/FrontCam';
 
 function App() {
 
