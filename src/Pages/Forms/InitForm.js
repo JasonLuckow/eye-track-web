@@ -9,6 +9,8 @@ import axios from "axios";
 import Constants from "../../Constants";
 // import Key from "../../API/Key";
 import {Auth} from "aws-amplify";
+import {useHistory, Link} from "react-router-dom";
+
 
 const genderList = [
     {id: 'male', title: 'Male'},
@@ -63,8 +65,12 @@ export default function InitForm() {
 
     const handleSubmit = e => {
         e.preventDefault()
-        if (validate())
-            window.alert('Submitting Form...')
+
+    }
+    let history = useHistory();
+
+    function handlePush() {
+        history.push("/callibrate");
     }
 
     //todo: replace with actual api989
@@ -77,6 +83,7 @@ export default function InitForm() {
                 console.log(res);
             }
         )
+        handlePush();
     }
     const getData = () => {
         const url = Constants.APIRoot + "TestGroup/get"

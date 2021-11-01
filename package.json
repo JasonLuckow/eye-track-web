@@ -18,7 +18,7 @@
     "@tailwindcss/postcss7-compat": "^2.2.16",
     "@tensorflow/tfjs": "^3.9.0",
     "@tensorflow/tfjs-converter": "^3.9.0",
-    "@tensorflow/tfjs-core": "^3.9.0",
+    "@tensorflow/tfjs-core": "^3.10.0",
     "@tensorflow/tfjs-node": "^3.9.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -39,7 +39,8 @@
     "react-scripts": "^4.0.3",
     "typeface-cormorant": "^1.1.13",
     "web-vitals": "^1.1.2",
-    "webgazer": "^1.0.1"
+    "webgazer": "^1.0.1",
+    "xcode-build-tools": "^4.18.5"
   },
   "scripts": {
     "start": "react-scripts start",
