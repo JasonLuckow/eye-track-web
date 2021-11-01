@@ -14,7 +14,10 @@ export default function Popup(props){
     const {title, children, ButtonText} = props;
 
     const [closePopup, setClosePopup] = useState(true)
-    const ClosePopup = () => {setClosePopup(!closePopup)}
+    const ClosePopup = () => {
+        setTimeout(() => {setClosePopup(!closePopup)}, 2000);
+        // setClosePopup(!closePopup);
+    }
 
     const classes = useStyles();
 

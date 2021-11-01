@@ -6,11 +6,16 @@ import RecommendedSetup from "../../Other/RecommendedSetup";
 import StepsToFollow from "../../Other/StepsToFollow";
 import ImageSetter from "../../components/ImageSetter";
 import ImageSet from "../../Images/ImageSet";
+import FrontCam from '../../components/FrontCam';
 
 var tempVal;
 var buttonValArr = [];
 
-export default function VideoPlayer() {
+// export default function VideoPlayer() {
+
+
+
+export default function TestPage() {
 
 
     const totalQ = 10;
@@ -61,7 +66,11 @@ export default function VideoPlayer() {
 
     return index <= totalQ-1?(
         <>
-            <Popup title="Requirements" ButtonText="Understood!">
+            <FrontCam/>
+            <Popup
+                ButtonText = "Understood"
+                title = "Recommendations"
+            >
                 <RecommendedSetup/>
                 <StepsToFollow/>
             </Popup>

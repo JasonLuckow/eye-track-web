@@ -24,10 +24,6 @@ export function ProtectedRoute({ component: Component, ...rest }){
             }
         })();
 
-        return () => {
-            setLoggedIn({}); // Magic
-          };
-
     });
     
     return (

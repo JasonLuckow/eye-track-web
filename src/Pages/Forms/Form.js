@@ -54,7 +54,7 @@ function Form() {
                 <div className={classes.appMain}>
                     <Header dark/>
                     <FormHead/>
-                    <AmplifySignOut/>
+
                 </div>
                 <CssBaseline/>
             </ThemeProvider>
