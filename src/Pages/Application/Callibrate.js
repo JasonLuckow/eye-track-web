@@ -80,7 +80,6 @@ export default function Callibrate()
   (
     <>      
     <div className={classes.root}>
-        <FrontCam/>
         <Paper className={classes.greyPaper}> 
           
           <CallibrateButton onClick={ButtonClicked}/>

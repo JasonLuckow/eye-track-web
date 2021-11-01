@@ -113,6 +113,7 @@ import './tailwind.generated.css';
 import TestPage from './Pages/Application/TestPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Callibrate from './Pages/Application/Callibrate'
+import FrontCam from '../../components/FrontCam';
 
 function App() {
 
@@ -127,6 +128,7 @@ function App() {
             <ProtectedRoute component={Form} exact path="/form"/>
             <ProtectedRoute component={TestPage} exact path="/test-page" />
             <ProtectedRoute component={Callibrate} exact path='/callibrate' />
+            <ProtectedRoute component={FrontCam} exact path='/FrontCam' />
             <Route component={Register} path="/" />
           </Switch>
         </Router>
