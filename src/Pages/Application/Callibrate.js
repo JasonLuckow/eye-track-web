@@ -5,7 +5,7 @@
 //Step two: display screen with circles to click
 
 //Step three: change screen color and repeat
-import React, {useState} from "react";
+import React, {useState, Suspense} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -14,6 +14,10 @@ import { Typography } from "@material-ui/core";
 import {ThemeProvider, createTheme} from "@material-ui/core/styles"
 import CallibrateButton from "../../controls/CallibrateButton";
 import CallibrateTypography from "../../controls/CallibrateTypography";
+import FrontCam from '../../components/FrontCam';
+import Popup from "../../components/Popup";
+import RecommendedSetup from "../../Other/RecommendedSetup";
+import StepsToFollow from "../../Other/StepsToFollow";
 
 // watch the video
 // https://react.school/material-ui/paper
@@ -59,7 +63,6 @@ const useStyles = makeStyles((theme) =>
     }
   }));
 
-
 export default function Callibrate() 
 {
   
@@ -75,12 +78,25 @@ export default function Callibrate()
 
   return index < 5 ?
   (
+    <>      
     <div className={classes.root}>
+        <FrontCam/>
+        <Popup
+            ButtonText = "Understood"
+            title = "Recommendations"
+        >
+            <RecommendedSetup/>
+            <StepsToFollow/>
+          </Popup>
         <Paper className={classes.greyPaper}> 
+          
           <CallibrateButton onClick={ButtonClicked}/>
           <CallibrateTypography/>
         </Paper>
     </div>
+    
+    
+    </>
 
   ):index < 10 ?
   (
@@ -404,6 +420,7 @@ export default function Callibrate()
     <div className = {classes.root}>
     <ThemeProvider theme={theme}>
       <div className="App">
+        <FrontCam/>
         <Typography variant = "h2">
           <h1 style={{fontSize: '2rem', color: 'black' , position: 'absolute', left: 650, top:0}}> Move Onto Actual Test</h1>
         </Typography>

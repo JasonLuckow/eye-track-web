@@ -9,10 +9,10 @@ import Popup from "../../components/Popup"
 import RecommendedSetup from "../../Other/RecommendedSetup";
 import StepsToFollow from "../../Other/StepsToFollow";
 import ImageSetter from "../../components/ImageSetter";
+import FrontCam from '../../components/FrontCam';
 
 
-
-export default function VideoPlayer() {
+export default function TestPage() {
 
 
     const [index, setIndex] = useState(0);
@@ -38,7 +38,7 @@ export default function VideoPlayer() {
 
     return index === videos.length - 1 ?(
         <>
-
+            <FrontCam/>
             <ImageSetter>
                 <img src={aDepth100} className="image" alt="logo"/>
                 <img src={aDepth0} className="image" alt="logo"/>
@@ -65,6 +65,7 @@ export default function VideoPlayer() {
         </>
     ):index < videos.length - 1 ? (
         <>
+            <FrontCam/>
             <Popup
                 ButtonText = "Understood"
                 title = "Recommendations"
