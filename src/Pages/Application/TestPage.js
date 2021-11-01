@@ -6,14 +6,17 @@ import RecommendedSetup from "../../Other/RecommendedSetup";
 import StepsToFollow from "../../Other/StepsToFollow";
 import ImageButtonSetter from "../../components/ImageButtonSetter";
 import ImageSet from "../../Images/ImageSet";
-import CSV from "../../components/CSV";
-import FrontCam from "../../components/FrontCam" ;
-import {Box, Card, Grid, Paper} from "@material-ui/core";
+import FrontCam from '../../components/FrontCam';
+import {Grid, Paper} from "@material-ui/core";
 
 var tempVal;
 var buttonValHash = new Map();
 
-export default function VideoPlayer() {
+// export default function VideoPlayer() {
+
+
+
+export default function TestPage() {
 
 
     const totalQ = 10;
@@ -69,7 +72,11 @@ export default function VideoPlayer() {
 
     return index <= totalQ-1?(
         <>
-            <Popup title="Requirements" ButtonText="Understood!">
+
+            <Popup
+                ButtonText = "Understood"
+                title = "Recommendations"
+            >
                 <RecommendedSetup/>
                 <StepsToFollow/>
             </Popup>
@@ -103,7 +110,7 @@ export default function VideoPlayer() {
                 </Grid>
 
                 <Grid container item xs={6} alignItems="flex-end" justify="center">
-                        Camera goes here
+                        <FrontCam/>
                 </Grid>
 
                 <Grid container item xs={3} justify="center">
@@ -113,11 +120,10 @@ export default function VideoPlayer() {
         </>
     ):(
         <>
-            <>
-                <h2>YOU HAVE COMPLETED YOUR ASSESSMENT</h2>
-                <Button onClick={Reset} text="Restart Test"/>
-                <AmplifySignOut/>
-            </>
+            <h2>YOU HAVE COMPLETED YOUR ASSESSMENT</h2>
+            <Button onClick={Reset} text="Restart Test"/>
+            <AmplifySignOut/>
+
         </>
     )
 };

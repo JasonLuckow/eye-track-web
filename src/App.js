@@ -110,9 +110,10 @@ import ConfirmRegister from '../src/Pages/Amplify/ConfirmRegister';
 import Form from "../src/Pages/Forms/Form";
 import './App.css';
 import './tailwind.generated.css';
-import VideoPlayer from '../src/Pages/Application/VideoPlayer';
+import TestPage from './Pages/Application/TestPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Callibrate from './Pages/Application/Callibrate'
+import FrontCam from './components/FrontCam';
 
 function App() {
 
@@ -125,8 +126,9 @@ function App() {
             <Route component={ConfirmRegister} path="/confirm-register" />
             <Route component={Login} path="/log-in" />
             <ProtectedRoute component={Form} exact path="/form"/>
-            <ProtectedRoute component={VideoPlayer} exact path="/test-page" />
+            <ProtectedRoute component={TestPage} exact path="/test-page" />
             <ProtectedRoute component={Callibrate} exact path='/callibrate' />
+            <ProtectedRoute component={FrontCam} exact path='/FrontCam' />
             <Route component={Register} path="/" />
           </Switch>
         </Router>

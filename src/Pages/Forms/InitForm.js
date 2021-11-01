@@ -9,6 +9,8 @@ import axios from "axios";
 import Constants from "../../Constants";
 // import Key from "../../API/Key";
 import {Auth} from "aws-amplify";
+import {useHistory, Link} from "react-router-dom";
+
 
 const genderList = [
     {id: 'male', title: 'Male'},
@@ -61,10 +63,15 @@ export default function InitForm() {
         resetForm
     } = useForm(initialFValues, true, validate);
 
+    const history = useHistory();
+
     const handleSubmit = e => {
         e.preventDefault()
-        if (validate())
-            window.alert('Submitting Form...')
+    }
+    
+
+    function handlePush() {
+        setTimeout(() => history.push('/callibrate'), 2000);
     }
 
     //todo: replace with actual api989
@@ -73,10 +80,17 @@ export default function InitForm() {
         axios.post(url, {
             FirstName: values.FirstName, LastName: values.LastName, DOB: values.DOB, SEX: values.SEX,
             DisorderDisability: values.DisorderDisability, Hand: values.Hand, Glasses: values.Glasses
-        }).then((res,) => {
-                console.log(res);
+        })
+        .then(function(response) {
+                console.log(response);
+                handlePush();
             }
-        )
+        ).catch(function(error) {
+            // toast.error('Could not register at this time. Please try again later.');
+            console.log("error loading next page")
+            // setShowRegSpinner(false);
+        });
+        // handlePush();
     }
     const getData = () => {
         const url = Constants.APIRoot + "TestGroup/get"
