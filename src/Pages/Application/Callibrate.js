@@ -81,13 +81,6 @@ export default function Callibrate()
     <>      
     <div className={classes.root}>
         <FrontCam/>
-        <Popup
-            ButtonText = "Understood"
-            title = "Recommendations"
-        >
-            <RecommendedSetup/>
-            <StepsToFollow/>
-          </Popup>
         <Paper className={classes.greyPaper}> 
           
           <CallibrateButton onClick={ButtonClicked}/>
