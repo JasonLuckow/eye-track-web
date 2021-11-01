@@ -4,11 +4,14 @@ import {AmplifySignOut} from "@aws-amplify/ui-react";
 import Popup from "../../components/Popup"
 import RecommendedSetup from "../../Other/RecommendedSetup";
 import StepsToFollow from "../../Other/StepsToFollow";
-import ImageSetter from "../../components/ImageSetter";
+import ImageButtonSetter from "../../components/ImageButtonSetter";
 import ImageSet from "../../Images/ImageSet";
+import CSV from "../../components/CSV";
+import FrontCam from "../../components/FrontCam" ;
+import {Box, Card, Grid, Paper} from "@material-ui/core";
 
 var tempVal;
-var buttonValArr = [];
+var buttonValHash = new Map();
 
 export default function VideoPlayer() {
 
@@ -41,7 +44,8 @@ export default function VideoPlayer() {
             setIndex(index+1)
 
             tempVal = [!fill1, !fill2, !fill3, !fill4];
-            buttonValArr.push(tempVal)
+            buttonValHash.set(index, tempVal);
+            console.log(buttonValHash)
 
             setFill1(true);
             setFill2(true);
@@ -56,7 +60,11 @@ export default function VideoPlayer() {
     const ButtonSelected3 = () => {setFill3(!fill3);}
     const ButtonSelected4 = () => {setFill4(!fill4);}
     const ButtonSelectedNo = () => {setFillNo(!fillNo)};
-    const Reset = () => {setIndex(0); setButtonTextIndex(0); console.log(buttonValArr);}
+    const Reset = () => {
+        setIndex(0);
+        setButtonTextIndex(0);
+        buttonValHash.clear()
+    }
 
 
     return index <= totalQ-1?(
@@ -65,40 +73,51 @@ export default function VideoPlayer() {
                 <RecommendedSetup/>
                 <StepsToFollow/>
             </Popup>
-            <ImageSetter>
-                <img src={image1[index]} className="image" alt="logo" style={{width: 300, height: 300}}/>
-                <img src={image2[index]} className="image" alt="logo" style={{width: 300, height: 300}}/>
-                <img src={image3[index]} className="image" alt="logo" style={{width: 300, height: 300}}/>
-                <img src={image4[index]} className="image" alt="logo" style={{width: 300, height: 300}}/>
-            </ImageSetter>
+            <Grid container spacing={2} style={{width: "95%", height:"95%"}} alignItems="flex-start">
 
-            <div className="Question-text">
-                <h1>Select all corresponding buttons if the shapes match. Then click {buttonText[buttonTextIndex]}.</h1>
-            </div>
-            <div className="Question-text">
-                <h1>If you believe none match, just click "No Matches".</h1>
-            </div>
 
-            <div className="Button-selection">
-                <Button variant={fill1 ? "outlined" : "contained"} size="large" text="Shape 1" onClick={ButtonSelected1} style={{width: 300, height: 200}}/>
-                <Button variant={fill2 ? "outlined" : "contained"} size="large" text="Shape 2" onClick={ButtonSelected2} style={{width: 300, height: 200}}/>
-                <Button variant={fill3 ? "outlined" : "contained"} size="large" text="Shape 3" onClick={ButtonSelected3} style={{width: 300, height: 200}}/>
-                <Button variant={fill4 ? "outlined" : "contained"} size="large" text="Shape 4" onClick={ButtonSelected4} style={{width: 300, height: 200}}/>
-            </div>
-            <div className="Button-selection">
-                <Button variant={fillNo ? "outlined" : "contained"} size="large" text="No Matches" onClick={ButtonSelectedNo} style={{width: 600, height: 100}}/>
-            </div>
-            <div className="Button-selection">
-                <Button text={buttonText[buttonTextIndex]} color="secondary" onClick={NextButtonClicked} style={{width: 600, height: 100}}/>
-            </div>
+                <Grid item xs={12}>
+                    <Paper elevation={0} style={{width: "90%", height:"100%", margin: "auto"}} >Select all corresponding buttons if the shapes match. Then click {buttonText[buttonTextIndex]}.</Paper>
+                </Grid>
+                <Grid item xs={12}>
+                    <Paper elevation={0} style={{width: "90%", height:"100%", margin: "auto"}}>If you believe none match, please select "No Matches".</Paper>
+                </Grid>
+
+
+                <Grid container item xs={3} justify="center">
+                    <ImageButtonSetter src={image1[index]} alt="Image 1" variant={fill1 ? "outlined" : "contained"} size="large" text="Shape 1" onClick={ButtonSelected1}/>
+                </Grid>
+                <Grid container item xs={3} justify="center">
+                    <ImageButtonSetter src={image2[index]} alt="Image 2" variant={fill2 ? "outlined" : "contained"} size="large" text="Shape 2" onClick={ButtonSelected2}/>
+                </Grid>
+                <Grid container item xs={3} justify="center">
+                    <ImageButtonSetter src={image3[index]} alt="Image 3" variant={fill3 ? "outlined" : "contained"} size="large" text="Shape 3" onClick={ButtonSelected3}/>
+                </Grid>
+                <Grid container item xs={3} justify="center">
+                    <ImageButtonSetter src={image4[index]} alt="Image 4" variant={fill4 ? "outlined" : "contained"} size="large" text="Shape 4" onClick={ButtonSelected4}/>
+                </Grid>
+
+
+                <Grid container item xs={3} justify="center">
+                    <Button variant={fillNo ? "outlined" : "contained"} size="large" text="No Matches" onClick={ButtonSelectedNo} style={{width: "50%", height: "100%"}}/>
+                </Grid>
+
+                <Grid container item xs={6} alignItems="flex-end" justify="center">
+                        Camera goes here
+                </Grid>
+
+                <Grid container item xs={3} justify="center">
+                    <Button text={buttonText[buttonTextIndex]} color="secondary" onClick={NextButtonClicked} style={{width: "50%", height: "100%"}}/>
+                </Grid>
+            </Grid>
         </>
     ):(
         <>
-            <div className="image-wrapper">
-                    <h2>YOU HAVE COMPLETED YOUR ASSESSMENT</h2>
-                    <Button onClick={Reset} text="Restart Test"/>
-                    <AmplifySignOut/>
-            </div>
+            <>
+                <h2>YOU HAVE COMPLETED YOUR ASSESSMENT</h2>
+                <Button onClick={Reset} text="Restart Test"/>
+                <AmplifySignOut/>
+            </>
         </>
     )
 };
