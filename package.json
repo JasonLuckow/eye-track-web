@@ -23,6 +23,7 @@
     "aws-amplify": "^4.2.7",
     "axios": "^0.22.0",
     "date-fns": "^2.24.0",
+    "dotenv": "^10.0.0",
     "emotion-theming": "^10.0.27",
     "react": "^17.0.2",
     "react-csv": "^2.0.3",
@@ -37,7 +38,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "set \"REACT_APP_APIKey=false\" && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:tailwind": "tailwindcss build -i src/tailwind.css -o src/tailwind.generated.css",
