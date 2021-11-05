@@ -44,3 +44,5 @@ amplifytools.xcconfig
 .secret-*
 #amplify-do-not-edit-end
 /src/API/Key.js
+/.env
+/src/Constants.js
