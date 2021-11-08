@@ -82,7 +82,6 @@ export default function InitForm() {
         })
         .then(function(response) {
                 console.log(response);
-                handlePush();
             }
         ).catch(function(error) {
             // toast.error('Could not register at this time. Please try again later.');
@@ -193,6 +192,11 @@ export default function InitForm() {
                             text="Reset"
                             color="default"
                             onClick={resetForm}/>
+                        <Button
+                            type="next"
+                            text="Next"
+                            color="default"
+                            onClick={handlePush}/>
                     </div>
 
                 </Grid>
