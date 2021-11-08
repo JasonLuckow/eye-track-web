@@ -17,6 +17,7 @@ import FrontCam from '../../components/FrontCam';
 import Popup from "../../components/Popup";
 import RecommendedSetup from "../../Other/RecommendedSetup";
 import StepsToFollow from "../../Other/StepsToFollow";
+import {useHistory} from "react-router-dom";
 
 // watch the video
 // https://react.school/material-ui/paper
@@ -44,6 +45,11 @@ const theme = createTheme({
 
 export default function Callibrate() 
 {
+
+    const history = useHistory();
+    function handlePush() {
+        setTimeout(() => history.push('/test-page'), 2000);
+    }
   const useStyles = makeStyles((theme) => 
 ({
     root: {
@@ -572,6 +578,7 @@ export default function Callibrate()
                     left: window.innerWidth/2.5, 
                     top: window.innerHeight/6}}>
                 {'Finish'}
+
               </MuiButton>
               <Typography variant = "h2">
                 <h1 style={{fontSize: '2rem', color: 'black' , position: 'absolute', left: window.innerWidth/2.5, top: window.innerHeight/10}}> Move Onto Actual Test</h1>
