@@ -23,23 +23,23 @@ import {useHistory} from "react-router-dom";
 // https://react.school/material-ui/paper
 
 
-function GridItem({ classes }) 
-{
-    return (
-      <Grid item xs={12} sm={6} md={3}>
-        <Paper className={classes.paper}>item</Paper>
-      </Grid>
-    );
-}
+// function GridItem({ classes })
+// {
+//     return (
+//       <Grid item xs={12} sm={6} md={3}>
+//         <Paper className={classes.paper}>item</Paper>
+//       </Grid>
+//     );
+// }
 
 
 const theme = createTheme({
   typography:{
     fontFamily: [
-        'h1'
+        'Robot', 'Mono'
     ].join(','),
   },
-}); 
+});
 
 
 
@@ -94,7 +94,7 @@ export default function Callibrate()
             <StepsToFollow/>
           </Popup>
             <Paper className={classes.greyPaper}> 
-              <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/>
+              <CallibrateButton  onClick={ButtonClicked}/>
               <CallibrateTypography/>
             </Paper>
         </div>
