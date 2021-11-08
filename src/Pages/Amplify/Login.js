@@ -2,6 +2,9 @@ import { Auth } from 'aws-amplify';
 import React, { useState } from 'react';
 import { useHistory, Link } from "react-router-dom";
 import AmplifyInput from "./AmplifyInput";
+import "tailwindcss/tailwind.css"
+
+
 const LogIn = () => {
   let history = useHistory();
   const [user, setUser] = useState({ username: '', password: '' });
@@ -26,7 +29,7 @@ const LogIn = () => {
     }
   }
   return (
-    <div className="container w-4/12 w-medium">
+    <div className="container w-4/12 w-medium ">
       <div className="bg-white shadow-xl rounded px-12 pt-6 pb-8 mb-4">
         <h3 className="text-lg text-gray-800 mb-2">Log In</h3>
         <AmplifyInput
