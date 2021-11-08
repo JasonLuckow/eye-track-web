@@ -2,7 +2,7 @@ import React from 'react'
 import {useEffect} from 'react';
 import webgazer from 'webgazer';
 import Button from "../controls/Button";
-import { CSVLink, CSVDownload } from "react-csv";
+
 
 export default function CSV() {
 

@@ -1,5 +1,10 @@
 
-import React, {useState} from "react";
+//Step one: display face and box for face to go into
+
+//Step two: display screen with circles to click
+
+//Step three: change screen color and repeat
+import React, {useState, Suspense} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import { Typography } from "@material-ui/core";
@@ -8,6 +13,10 @@ import CallibrateButton from "../../controls/CallibrateButton";
 import CallibrateTypography from "../../controls/CallibrateTypography";
 import Grid from "@material-ui/core/Grid";
 import { Button as MuiButton} from "@material-ui/core";
+import FrontCam from '../../components/FrontCam';
+import Popup from "../../components/Popup";
+import RecommendedSetup from "../../Other/RecommendedSetup";
+import StepsToFollow from "../../Other/StepsToFollow";
 
 // watch the video
 // https://react.school/material-ui/paper
@@ -54,6 +63,7 @@ export default function Callibrate()
         backgroundColor: '#000'
     }
   }));
+  
   const classes = useStyles();
   const [index, setIndex] = useState(0);
   const [fill1, setFill1] = useState(true);
@@ -69,6 +79,14 @@ export default function Callibrate()
     <Grid container>
       <Grid item xs={12}>
         <div className={classes.root}>
+        <FrontCam/>
+        <Popup
+            ButtonText = "Understood"
+            title = "Recommendations"
+        >
+            <RecommendedSetup/>
+            <StepsToFollow/>
+          </Popup>
             <Paper className={classes.greyPaper}> 
               <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/>
               <CallibrateTypography/>
@@ -542,6 +560,7 @@ export default function Callibrate()
         <div className = {classes.root}>
           <ThemeProvider theme={theme}>
             <div className="App">
+            <FrontCam/>
               <MuiButton
                 variant={"contained"}
                 size={"small"}
@@ -564,3 +583,4 @@ export default function Callibrate()
     </Grid>
   )
 }
+
