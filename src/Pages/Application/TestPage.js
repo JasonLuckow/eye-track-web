@@ -8,13 +8,14 @@ import ImageButtonSetter from "../../components/ImageButtonSetter";
 import ImageSet from "../../Images/ImageSet";
 import FrontCam from '../../components/FrontCam';
 import {Grid, Paper} from "@material-ui/core";
+import axios from "axios";
 
 var tempVal;
 var buttonValHash = new Map();
 
 // export default function VideoPlayer() {
 
-
+require('dotenv').config();
 
 export default function TestPage() {
 
@@ -64,9 +65,40 @@ export default function TestPage() {
     const ButtonSelected4 = () => {setFill4(!fill4);}
     const ButtonSelectedNo = () => {setFillNo(!fillNo)};
     const Reset = () => {
+        postData();
         setIndex(0);
         setButtonTextIndex(0);
         buttonValHash.clear()
+    }
+
+    // function handlePush() {
+    //     setTimeout(() => history.push('/callibrate'), 2000);
+    // }
+
+    const postData = () => {
+        const url = process.env.REACT_APP_APIRoot + "/Result/post"
+        axios.post(url, {
+            Question1: JSON.stringify(buttonValHash.get(0)), 
+            Question2: JSON.stringify(buttonValHash.get(1)), 
+            Question3: JSON.stringify(buttonValHash.get(2)), 
+            Question4: JSON.stringify(buttonValHash.get(3)), 
+            Question5: JSON.stringify(buttonValHash.get(4)),  
+            Question6: JSON.stringify(buttonValHash.get(5)), 
+            Question7: JSON.stringify(buttonValHash.get(6)), 
+            Question8: JSON.stringify(buttonValHash.get(7)),  
+            Question9: JSON.stringify(buttonValHash.get(8)),  
+            Question10: JSON.stringify(buttonValHash.get(9))
+        })
+        .then(function(response) {
+                console.log(response);
+                // handlePush();
+            }
+        ).catch(function(error) {
+            // toast.error('Could not register at this time. Please try again later.');
+            console.log("error loading next page")
+            // setShowRegSpinner(false);
+        });
+        // handlePush();
     }
 
 
