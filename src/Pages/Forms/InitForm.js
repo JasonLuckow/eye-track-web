@@ -233,7 +233,12 @@ export default function InitForm() {
                             type="reset"
                             text="Reset"
                             color="default"
-                            onClick={resetForm} />
+                            onClick={resetForm}/>
+                        <Button
+                            type="next"
+                            text="Next"
+                            color="default"
+                            onClick={handlePush}/>
                     </div>
 
                 </Grid>
