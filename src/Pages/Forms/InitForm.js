@@ -1,28 +1,28 @@
-import React from 'react';
-import {useForm, Form} from "../../components/UseForm";
+import React, { useState } from "react";
+import { useForm, Form } from "../../components/UseForm";
 import Input from "../../controls/Input";
 import RadioButton from "../../controls/RadioButton";
 import DatePicker from "../../controls/DatePicker";
-import {Grid} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Button from "../../controls/Button";
 import axios from "axios";
-import {Auth} from "aws-amplify";
-import {useHistory, Link} from "react-router-dom";
+import { Auth } from "aws-amplify";
+import { useHistory, Link } from "react-router-dom";
 
 require('dotenv').config();
 
 const genderList = [
-    {id: 'male', title: 'Male'},
-    {id: 'female', title: 'Female'}
+    { id: 'male', title: 'Male' },
+    { id: 'female', title: 'Female' }
 ]
 const handList = [
-    {id: 'left', title: 'Right'},
-    {id: 'right', title: 'Left'}
+    { id: 'left', title: 'Right' },
+    { id: 'right', title: 'Left' }
 ]
 
 const glassesList = [
-    {id: 'yes', title: 'Yes'},
-    {id: 'no', title: 'No'}
+    { id: 'yes', title: 'Yes' },
+    { id: 'no', title: 'No' }
 ]
 
 const initialFValues = {
@@ -38,10 +38,15 @@ const initialFValues = {
 }
 
 
-export default function InitForm() {
 
+
+export default function InitForm() {
+    let email = ""
+    Auth.currentAuthenticatedUser().then((user) => {
+        email = user.attributes.email
+    })
     const validate = (fieldValues = values) => {
-        let temp = {...errors}
+        let temp = { ...errors }
         if ('FirstName' in fieldValues)
             temp.FirstName = fieldValues.FirstName ? "" : "This field is required."
         if ('LastName' in fieldValues)
@@ -67,39 +72,75 @@ export default function InitForm() {
     const handleSubmit = e => {
         e.preventDefault()
     }
-    
+
 
     function handlePush() {
         setTimeout(() => history.push('/callibrate'), 2000);
     }
 
+    // const [index, setIndex] = useState(0);
+    var index = -1
+
     //todo: replace with actual api989
     const postData = () => {
-        const url = process.env.REACT_APP_APIRoot + "/TestGroup/post"
-        axios.post(url, {
-            FirstName: values.FirstName, LastName: values.LastName, DOB: values.DOB, SEX: values.SEX,
-            DisorderDisability: values.DisorderDisability, Hand: values.Hand, Glasses: values.Glasses
-        })
-        .then(function(response) {
-                console.log(response);
-                handlePush();
+
+
+        const geturl = process.env.REACT_APP_APIRoot + "/TestGroup/get?type=email&identifier=" + email
+        axios.get(geturl).then(res => {
+            index = res.data.testId;
+            if (index != -1) {
+                const patchurl = process.env.REACT_APP_APIRoot + "/TestGroup/patch/" + index
+                axios.patch(patchurl, {
+                    FirstName: values.FirstName, LastName: values.LastName, DOB: values.DOB, SEX: values.SEX,
+                    DisorderDisability: values.DisorderDisability, Hand: values.Hand, Glasses: values.Glasses,
+                    Email: email
+                }).then(function (response) {
+                    console.log("patch response:", response);
+                }).catch(function (error) {
+                    // toast.error('Could not register at this time. Please try again later.');
+                    console.log("error loading next page")
+                    // setShowRegSpinner(false);
+                });
             }
-        ).catch(function(error) {
-            // toast.error('Could not register at this time. Please try again later.');
-            console.log("error loading next page")
-            // setShowRegSpinner(false);
-        });
-        // handlePush();
+        }
+        ).catch(function (error) {
+            const posturl = process.env.REACT_APP_APIRoot + "/TestGroup/post"
+            // index = null
+            // console.log("catch data index", index)
+            if (index == -1) {
+                axios.post(posturl, {
+                    FirstName: values.FirstName, LastName: values.LastName, DOB: values.DOB, SEX: values.SEX,
+                    DisorderDisability: values.DisorderDisability, Hand: values.Hand, Glasses: values.Glasses,
+                    Email: email
+                }).then(function (response) {
+                    console.log("post response:", response);
+
+                }).catch(function (error) {
+                    // toast.error('Could not register at this time. Please try again later.');
+                    console.log("error loading next page")
+                    // setShowRegSpinner(false);
+                });
+            }
+        })
+
+        handlePush();
     }
     const getData = () => {
-        const url = process.env.REACT_APP_APIRoot +  "/TestGroup/get"
-        axios.get(url, {
-            FirstName: values.FirstName, LastName: values.LastName, DOB: values.DOB, SEX: values.SEX,
-            DisorderDisability: values.DisorderDisability, Hand: values.Hand, Glasses: values.Glasses
-        }).then((res,) => {
-                console.log(res);
-            }
+        // const email = ""
+        // Auth.currentAuthenticatedUser().then((user) => {
+        console.log('user email = ' + email);
+        // const email = email
+        const url = process.env.REACT_APP_APIRoot + "/TestGroup/get?type=email&identifier=" + email
+        axios.get(url).then(res => {
+            console.log("testid: ", res.data.testId);
+            index = res.data.testId;
+            console.log("data index", index)
+
+        }
         )
+        //   });
+
+
     }
 
     //todo: test get request
@@ -121,13 +162,13 @@ export default function InitForm() {
     }
 
 
-//}).catch(error => {
-//      setError(error);
-//    });
+    //}).catch(error => {
+    //      setError(error);
+    //    });
     // }, []);
 
     // if (error) return `Error: ${error.message}`;
-//  if (!post) return "No post!"
+    //  if (!post) return "No post!"
     return (
         <Form onSubmit={handleSubmit}>
             <Grid container>
@@ -192,7 +233,7 @@ export default function InitForm() {
                             type="reset"
                             text="Reset"
                             color="default"
-                            onClick={resetForm}/>
+                            onClick={resetForm} />
                     </div>
 
                 </Grid>
