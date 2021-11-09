@@ -1,24 +1,33 @@
 {
   "auth": {
-    "eyetrackweb2752363b": {
+    "eyetrackweb": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
         "loginMechanisms": [
-          "PREFERRED_USERNAME"
+          "EMAIL"
         ],
         "signupAttributes": [
-          "EMAIL"
+          "EMAIL",
+          "PHONE_NUMBER"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
-          "passwordPolicyCharacters": []
+          "passwordPolicyCharacters": [
+            "REQUIRES_LOWERCASE",
+            "REQUIRES_NUMBERS",
+            "REQUIRES_SYMBOLS",
+            "REQUIRES_UPPERCASE"
+          ]
         },
-        "mfaConfiguration": "OFF",
+        "mfaConfiguration": "ON",
         "mfaTypes": [
-          "SMS"
+          "TOTP"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
         ]
       }
     }
