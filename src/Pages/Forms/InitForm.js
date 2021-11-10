@@ -54,7 +54,6 @@ export default function InitForm() {
     Auth.currentAuthenticatedUser().then((user) => {
         setEmail(user.attributes.email)
         setUrl(process.env.REACT_APP_APIRoot + "/TestGroup/get?type=email&identifier=" + email)
-        console.log('auth url', url)
     })
 
     axios.get(url
@@ -65,8 +64,6 @@ export default function InitForm() {
         setGender(res.data.SEX)
         setHand(res.data.Hand)
         setGlasses(res.data.Glasses)
-
-        console.log('response data: ', res.data)
     }).catch(function (error) {
         // toast.error('Could not register at this time. Please try again later.');
         console.log("error loading get request")
@@ -115,7 +112,7 @@ export default function InitForm() {
         const geturl = process.env.REACT_APP_APIRoot + "/TestGroup/get?type=email&identifier=" + email
         axios.get(geturl
         ).then(res => {
-            console.log(res.data)
+        
             index = res.data.testId;
             if (index != -1) {
                 const patchurl = process.env.REACT_APP_APIRoot + "/TestGroup/patch/" + index
