@@ -72,25 +72,14 @@ export default function TestPage() {
         postData();
         setIndex(0);
         setButtonTextIndex(0);
-        
+
     }
-
-    // function handlePush() {
-    //     setTimeout(() => history.push('/callibrate'), 2000);
-    // }
-
-
 
     const postData = () => {
         const posturl = process.env.REACT_APP_APIRoot + "/Result/post"
-        // console.log('user email = ' + user.attributes.email);
-        // const email = user.attributes.email
         const geturl = process.env.REACT_APP_APIRoot + "/TestGroup/get?type=email&identifier=" + email
         axios.get(geturl).then(res => {
-            console.log(res.data.testId);
             const testGroupID = res.data.testId
-
-            // console.log(JSON.stringify(buttonValHash.get(0)))
             axios.post(posturl, {
                 testID: JSON.stringify(testGroupID),
                 Question1: JSON.stringify(buttonValHash.get(0)),
@@ -107,9 +96,7 @@ export default function TestPage() {
                 .then(function (response) {
                     console.log(response);
                     buttonValHash.clear()
-                    // handlePush();
-                }
-                ).catch(function (error) {
+                }).catch(function (error) {
                     // toast.error('Could not register at this time. Please try again later.');
                     console.log("error loading next page")
                     // setShowRegSpinner(false);
@@ -117,8 +104,6 @@ export default function TestPage() {
 
         }
         )
-
-        // handlePush();
     }
 
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, Form } from "../../components/UseForm";
 import Input from "../../controls/Input";
 import RadioButton from "../../controls/RadioButton";
@@ -37,14 +37,42 @@ const initialFValues = {
     // email: '',
 }
 
-
-
-
 export default function InitForm() {
-    let email = ""
+
+    const [email, setEmail] = useState(null)
+    const [disorderDisability, setDisorder] = useState(null)
+    const [firstName, setFirstName] = useState(null)
+    const [lastName, setLastName] = useState(null)
+    const [gender, setGender] = useState(null)
+    const [hand, setHand] = useState(null)
+    const [glasses, setGlasses] = useState(null)
+    const [url, setUrl] = useState(null)
+
+    // Only need to do this once but it does this at every render
+    // i.e. every key press or value change which makes it an inefficient use of api
+
     Auth.currentAuthenticatedUser().then((user) => {
-        email = user.attributes.email
+        setEmail(user.attributes.email)
+        setUrl(process.env.REACT_APP_APIRoot + "/TestGroup/get?type=email&identifier=" + email)
+        console.log('auth url', url)
     })
+
+    axios.get(url
+    ).then(res => {
+        setDisorder(res.data.DisorderDisability)
+        setFirstName(res.data.FirstName)
+        setLastName(res.data.LastName)
+        setGender(res.data.SEX)
+        setHand(res.data.Hand)
+        setGlasses(res.data.Glasses)
+
+        console.log('response data: ', res.data)
+    }).catch(function (error) {
+        // toast.error('Could not register at this time. Please try again later.');
+        console.log("error loading get request")
+        // setShowRegSpinner(false);
+    });
+
     const validate = (fieldValues = values) => {
         let temp = { ...errors }
         if ('FirstName' in fieldValues)
@@ -84,15 +112,16 @@ export default function InitForm() {
     //todo: replace with actual api989
     const postData = () => {
 
-
         const geturl = process.env.REACT_APP_APIRoot + "/TestGroup/get?type=email&identifier=" + email
-        axios.get(geturl).then(res => {
+        axios.get(geturl
+        ).then(res => {
+            console.log(res.data)
             index = res.data.testId;
             if (index != -1) {
                 const patchurl = process.env.REACT_APP_APIRoot + "/TestGroup/patch/" + index
                 axios.patch(patchurl, {
-                    FirstName: values.FirstName, LastName: values.LastName, DOB: values.DOB, SEX: values.SEX,
-                    DisorderDisability: values.DisorderDisability, Hand: values.Hand, Glasses: values.Glasses,
+                    FirstName: values.FirstName || firstName, LastName: values.LastName || lastName, DOB: values.DOB, SEX: values.SEX || gender,
+                    DisorderDisability: values.DisorderDisability || disorderDisability, Hand: values.Hand || hand, Glasses: values.Glasses || glasses,
                     Email: email
                 }).then(function (response) {
                     console.log("patch response:", response);
@@ -102,11 +131,8 @@ export default function InitForm() {
                     // setShowRegSpinner(false);
                 });
             }
-        }
-        ).catch(function (error) {
+        }).catch(function (error) {
             const posturl = process.env.REACT_APP_APIRoot + "/TestGroup/post"
-            // index = null
-            // console.log("catch data index", index)
             if (index == -1) {
                 axios.post(posturl, {
                     FirstName: values.FirstName, LastName: values.LastName, DOB: values.DOB, SEX: values.SEX,
@@ -175,21 +201,21 @@ export default function InitForm() {
                 <Grid item xs={6}>
                     <Input
                         name="FirstName"
-                        label="First Name"
+                        label={firstName}
                         value={values.FirstName}
                         onChange={handleInputChange}
                         error={errors.FirstName}
                     />
                     <Input
                         name="LastName"
-                        label="Last Name"
+                        label={lastName}
                         value={values.LastName}
                         onChange={handleInputChange}
                         error={errors.LastName}
                     />
                     <Input
                         name="DisorderDisability"
-                        label="Disorders"
+                        label={disorderDisability}
                         value={values.DisorderDisability}
                         onChange={handleInputChange}
                     />
@@ -198,14 +224,14 @@ export default function InitForm() {
                     <RadioButton
                         name="SEX"
                         label="Gender"
-                        value={values.SEX}
+                        value={values.SEX || gender}
                         onChange={handleInputChange}
                         items={genderList}
                     />
                     <RadioButton
                         name="Hand"
                         label="Dominant Hand:"
-                        value={values.Hand}
+                        value={values.Hand || hand}
                         onChange={handleInputChange}
                         items={handList}
                     />
@@ -213,7 +239,7 @@ export default function InitForm() {
                     <RadioButton
                         name="Glasses"
                         label="Do you wear Glasses?"
-                        value={values.Glasses}
+                        value={values.Glasses || glasses}
                         onChange={handleInputChange}
                         items={glassesList}
                     />
@@ -233,12 +259,12 @@ export default function InitForm() {
                             type="reset"
                             text="Reset"
                             color="default"
-                            onClick={resetForm}/>
+                            onClick={resetForm} />
                         <Button
                             type="next"
                             text="Next"
                             color="default"
-                            onClick={handlePush}/>
+                            onClick={handlePush} />
                     </div>
 
                 </Grid>
