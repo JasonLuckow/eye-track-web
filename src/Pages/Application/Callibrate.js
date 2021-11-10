@@ -80,6 +80,10 @@ export default function Callibrate()
     setFill1(!fill1);
   }
 
+  function handlePush() {
+    setTimeout(() => history.push('/test-page'), 2000);
+}
+
   return index < 5 ?
   (
     <Grid container>
@@ -571,6 +575,7 @@ export default function Callibrate()
                 variant={"contained"}
                 size={"small"}
                 color={"primary"}
+                onClick={handlePush}
                 style=
                 {{width: 300, 
                     height: 50, 
@@ -578,6 +583,7 @@ export default function Callibrate()
                     left: window.innerWidth/2.5, 
                     top: window.innerHeight/6}}>
                 {'Finish'}
+                
 
               </MuiButton>
               <Typography variant = "h2">
