@@ -1,16 +1,16 @@
 {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "eyetrabed9d1bb",
+    "resourceNameTruncated": "eyetraee9e84a4",
     "userPoolName": "eyetrackweb",
     "autoVerifiedAttributes": [
         "email"
     ],
     "mfaConfiguration": "OFF",
     "mfaTypes": [
-        "TOTP"
+        "SMS Text Message"
     ],
-    "smsAuthenticationMessage": "Your login code is {####}",
+    "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
     "emailVerificationSubject": "Forgot password code: {####}",
     "emailVerificationMessage": "Forgot password code: {####}",
@@ -23,17 +23,16 @@
         "Requires Uppercase"
     ],
     "requiredAttributes": [
-        "email",
-        "phone_number"
+        "email"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "eyetrabed9d1bb_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "eyetraee9e84a4_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "bed9d1bb",
+    "sharedId": "ee9e84a4",
     "resourceName": "eyetrackweb",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
@@ -59,6 +58,6 @@
     "thirdPartyAuth": false,
     "authProviders": [],
     "usernameCaseSensitive": false,
-    "dependsOn": [],
-    "hostedUI": false
+    "useEnabledMfas": false,
+    "dependsOn": []
 }
