@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { useForm, Form } from "../../components/UseForm";
+import React, {useState, useEffect} from "react";
+import {useForm, Form} from "../../components/UseForm";
 import Input from "../../controls/Input";
 import RadioButton from "../../controls/RadioButton";
 import DatePicker from "../../controls/DatePicker";
-import { Grid } from "@material-ui/core";
+import {Grid} from "@material-ui/core";
 import Button from "../../controls/Button";
 import axios from "axios";
-import { Auth } from "aws-amplify";
-import { useHistory, Link } from "react-router-dom";
+import {Auth} from "aws-amplify";
+import {useHistory, Link} from "react-router-dom";
 
 require('dotenv').config();
 
 const genderList = [
-    { id: 'male', title: 'Male' },
-    { id: 'female', title: 'Female' }
+    {id: 'male', title: 'Male'},
+    {id: 'female', title: 'Female'}
 ]
 const handList = [
-    { id: 'left', title: 'Right' },
-    { id: 'right', title: 'Left' }
+    {id: 'left', title: 'Right'},
+    {id: 'right', title: 'Left'}
 ]
 
 const glassesList = [
-    { id: 'yes', title: 'Yes' },
-    { id: 'no', title: 'No' }
+    {id: 'yes', title: 'Yes'},
+    {id: 'no', title: 'No'}
 ]
 
 const initialFValues = {
@@ -71,7 +71,7 @@ export default function InitForm() {
     });
 
     const validate = (fieldValues = values) => {
-        let temp = { ...errors }
+        let temp = {...errors}
         if ('FirstName' in fieldValues)
             temp.FirstName = fieldValues.FirstName ? "" : "This field is required."
         if ('LastName' in fieldValues)
@@ -112,13 +112,18 @@ export default function InitForm() {
         const geturl = process.env.REACT_APP_APIRoot + "/TestGroup/get?type=email&identifier=" + email
         axios.get(geturl
         ).then(res => {
-        
+
             index = res.data.testId;
             if (index != -1) {
                 const patchurl = process.env.REACT_APP_APIRoot + "/TestGroup/patch/" + index
                 axios.patch(patchurl, {
-                    FirstName: values.FirstName || firstName, LastName: values.LastName || lastName, DOB: values.DOB, SEX: values.SEX || gender,
-                    DisorderDisability: values.DisorderDisability || disorderDisability, Hand: values.Hand || hand, Glasses: values.Glasses || glasses,
+                    FirstName: values.FirstName || firstName,
+                    LastName: values.LastName || lastName,
+                    DOB: values.DOB,
+                    SEX: values.SEX || gender,
+                    DisorderDisability: values.DisorderDisability || disorderDisability,
+                    Hand: values.Hand || hand,
+                    Glasses: values.Glasses || glasses,
                     Email: email
                 }).then(function (response) {
                     console.log("patch response:", response);
@@ -142,7 +147,10 @@ export default function InitForm() {
                     // toast.error('Could not register at this time. Please try again later.');
                     console.log("error loading next page")
                     // setShowRegSpinner(false);
-                });
+                }).finally(() => {
+                        handlePush()
+                    }
+                );
             }
         })
 
@@ -155,11 +163,11 @@ export default function InitForm() {
         // const email = email
         const url = process.env.REACT_APP_APIRoot + "/TestGroup/get?type=email&identifier=" + email
         axios.get(url).then(res => {
-            console.log("testid: ", res.data.testId);
-            index = res.data.testId;
-            console.log("data index", index)
+                console.log("testid: ", res.data.testId);
+                index = res.data.testId;
+                console.log("data index", index)
 
-        }
+            }
         )
         //   });
 
@@ -256,12 +264,7 @@ export default function InitForm() {
                             type="reset"
                             text="Reset"
                             color="default"
-                            onClick={resetForm} />
-                        <Button
-                            type="next"
-                            text="Next"
-                            color="default"
-                            onClick={handlePush} />
+                            onClick={resetForm}/>
                     </div>
 
                 </Grid>
