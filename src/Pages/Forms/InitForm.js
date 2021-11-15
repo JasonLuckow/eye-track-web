@@ -206,21 +206,21 @@ export default function InitForm() {
                 <Grid item xs={6}>
                     <Input
                         name="FirstName"
-                        label={firstName}
+                        label={firstName || "First Name"}
                         value={values.FirstName}
                         onChange={handleInputChange}
                         error={errors.FirstName}
                     />
                     <Input
                         name="LastName"
-                        label={lastName}
+                        label={lastName || "Last Name"}
                         value={values.LastName}
                         onChange={handleInputChange}
                         error={errors.LastName}
                     />
                     <Input
                         name="DisorderDisability"
-                        label={disorderDisability}
+                        label={disorderDisability || "Disorders"}
                         value={values.DisorderDisability}
                         onChange={handleInputChange}
                     />
