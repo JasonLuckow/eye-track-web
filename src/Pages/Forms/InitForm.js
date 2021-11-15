@@ -100,6 +100,13 @@ export default function InitForm() {
 
 
     function handlePush() {
+        for(var i in localStorage)
+        {
+            if (i.startsWith('xy:')){
+                window.localStorage.removeItem(i)
+            }
+            
+        }
         setTimeout(() => history.push('/callibrate'), 2000);
     }
 

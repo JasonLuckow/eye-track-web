@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../../controls/Button";
 import { AmplifySignOut } from "@aws-amplify/ui-react";
 import Popup from "../../components/Popup"
@@ -10,11 +10,11 @@ import FrontCam from '../../components/FrontCam';
 import { Grid, Paper } from "@material-ui/core";
 import axios from "axios";
 import { Auth } from "aws-amplify";
+import webgazer from 'webgazer';
 
 var tempVal;
 var buttonValHash = new Map();
-
-// export default function VideoPlayer() {
+var eyeMap = new Array();
 
 require('dotenv').config();
 
@@ -39,7 +39,9 @@ export default function TestPage() {
     const image3 = [ImageSet.figTwo.aDepth.a20, ImageSet.figFour.bPlane.b120, ImageSet.figFive.bDepth.b300, ImageSet.figThree.aDepth.a180, ImageSet.figFive.bDepth.b220, ImageSet.figOne.aDepth.a220, ImageSet.figFour.aPlane.a120, ImageSet.figThree.bDepth.b100, ImageSet.figFive.aDepth.a220, ImageSet.figOne.bDepth.b320];
     const image4 = [ImageSet.figThree.bDepth.b300, ImageSet.figFour.bDepth.b20, ImageSet.figTwo.aDepth.a220, ImageSet.figFour.aPlane.a280, ImageSet.figThree.aPlane.a140, ImageSet.figOne.bDepth.b300, ImageSet.figTwo.bDepth.b240, ImageSet.figFour.bPlane.b320, ImageSet.figTwo.bPlane.b160, ImageSet.figThree.aPlane.a260];
     // figOne[1, 2], figFour[2, 3, 4], figTwo[2, 4], None[], figFive[1, 3], figOne[1, 2, 3, 4], figTwo[1, 4], figFour[1, 2, 4], figFive[2, 3], figOne[2, 3]
+
     const NextButtonClicked = () => {
+
         if (index === totalQ - 2) { setButtonTextIndex(1) }
 
         if (fill1 && fill2 && fill3 && fill4 && fillNo) {
@@ -50,8 +52,10 @@ export default function TestPage() {
             alert(`Select another button`)
         } else {
             setIndex(index + 1)
-
-            tempVal = [!fill1, !fill2, !fill3, !fill4];
+            
+            //put marker for next question
+            // the performance now is to store when the user clicked the button
+            tempVal = [!fill1, !fill2, !fill3, !fill4, performance.now()];
             buttonValHash.set(index, tempVal);
             console.log(buttonValHash)
 
@@ -61,7 +65,6 @@ export default function TestPage() {
             setFill4(true);
             setFillNo(true);
         }
-
     }
     const ButtonSelected1 = () => { setFill1(!fill1); }
     const ButtonSelected2 = () => { setFill2(!fill2); }
@@ -69,13 +72,23 @@ export default function TestPage() {
     const ButtonSelected4 = () => { setFill4(!fill4); }
     const ButtonSelectedNo = () => { setFillNo(!fillNo) };
     const Reset = () => {
-        postData();
+        postSelectionsData();
         setIndex(0);
         setButtonTextIndex(0);
 
     }
 
-    const postData = () => {
+    const postSelectionsData = () => {
+
+        for(var i in localStorage) {
+            if (i.startsWith('xy:')){
+                eyeMap.push(localStorage[i])
+                // console.log(localStorage[i], i);
+                window.localStorage.removeItem(i)
+            }
+            
+        }
+        console.log(eyeMap)
         const posturl = process.env.REACT_APP_APIRoot + "/Result/post"
         const geturl = process.env.REACT_APP_APIRoot + "/TestGroup/get?type=email&identifier=" + email
         axios.get(geturl).then(res => {
@@ -91,7 +104,8 @@ export default function TestPage() {
                 Question7: JSON.stringify(buttonValHash.get(6)),
                 Question8: JSON.stringify(buttonValHash.get(7)),
                 Question9: JSON.stringify(buttonValHash.get(8)),
-                Question10: JSON.stringify(buttonValHash.get(9))
+                Question10: JSON.stringify(buttonValHash.get(9)),
+                SessionData: JSON.stringify(eyeMap)
             })
                 .then(function (response) {
                     console.log(response);
@@ -147,7 +161,7 @@ export default function TestPage() {
                 </Grid>
 
                 <Grid container item xs={6} alignItems="flex-end" justify="center">
-                    <FrontCam />
+                    <FrontCam/>
                 </Grid>
 
                 <Grid container item xs={3} justify="center">
@@ -157,6 +171,7 @@ export default function TestPage() {
         </>
     ) : (
         <>
+            
             <h2>YOU HAVE COMPLETED YOUR ASSESSMENT</h2>
             <Button onClick={Reset} text="Restart Test" />
             <AmplifySignOut />
