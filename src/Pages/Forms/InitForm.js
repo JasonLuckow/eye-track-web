@@ -256,21 +256,19 @@ export default function InitForm() {
                         onChange={handleInputChange}
                         items={glassesList}
                     />
+                    <div>
                     <Button
-                        style={{
-                            textAlign: "left"
-                        }}
                         onClick={postData}
                         type="submit"
                         text="Submit"
                         disabled={disabled}
                     />
                     <Button
-                        d
                         type="reset"
                         text="Reset"
                         color="default"
                         onClick={resetForm}/>
+                    </div>
 
                 </Grid>
 
