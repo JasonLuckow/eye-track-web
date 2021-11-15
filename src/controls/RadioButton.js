@@ -1,25 +1,28 @@
 import React from 'react'
-import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@material-ui/core";
+import {FormControl, FormLabel, RadioGroup as MuiRadioGroup, FormControlLabel, Radio} from '@material-ui/core';
 
 export default function RadioButton(props) {
 
     const {name, label, value, onChange, items} = props;
+
     return (
         <FormControl>
-            <FormLabel>{label}</FormLabel>
-            <RadioGroup row
-                        name={name}
-                        value={value}
-                        onChange={onChange}>
+            <FormLabel style={{
+                textAlign: 'left',
+            }}>{label}</FormLabel>
+            <MuiRadioGroup row
+                           name={name}
+                           value={value}
+                           onChange={onChange}
+            >
                 {
                     items.map(
-                        (item, index) => (
-                            <FormControlLabel value={item.id} control={<Radio/>} label={item.title}/>
-
+                        item => (
+                            <FormControlLabel key={item.id} value={item.id} control={<Radio/>} label={item.title}/>
                         )
                     )
                 }
-            </RadioGroup>
+            </MuiRadioGroup>
         </FormControl>
     )
 }

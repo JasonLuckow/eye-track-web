@@ -7,7 +7,7 @@ import {Grid} from "@material-ui/core";
 import Button from "../../controls/Button";
 import axios from "axios";
 import {Auth} from "aws-amplify";
-import {useHistory, Link} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 require('dotenv').config();
 
@@ -92,6 +92,8 @@ export default function InitForm() {
         resetForm
     } = useForm(initialFValues, true, validate);
 
+    const [disabled, setDisabled] = useState(false);
+
     const history = useHistory();
 
     const handleSubmit = e => {
@@ -108,7 +110,7 @@ export default function InitForm() {
 
     //todo: replace with actual api989
     const postData = () => {
-
+        setDisabled(true)
         const geturl = process.env.REACT_APP_APIRoot + "/TestGroup/get?type=email&identifier=" + email
         axios.get(geturl
         ).then(res => {
@@ -153,8 +155,7 @@ export default function InitForm() {
                 );
             }
         })
-
-        handlePush();
+        handlePush()
     }
     const getData = () => {
         // const email = ""
@@ -205,6 +206,7 @@ export default function InitForm() {
             <Grid container>
                 <Grid item xs={6}>
                     <Input
+
                         name="FirstName"
                         label={firstName || "First Name"}
                         value={values.FirstName}
@@ -222,6 +224,12 @@ export default function InitForm() {
                         name="DisorderDisability"
                         label={disorderDisability || "Disorders"}
                         value={values.DisorderDisability}
+                        onChange={handleInputChange}
+                    />
+                    <DatePicker
+                        name="DOB"
+                        label="Date of Birth"
+                        value={values.DOB}
                         onChange={handleInputChange}
                     />
                 </Grid>
@@ -248,26 +256,24 @@ export default function InitForm() {
                         onChange={handleInputChange}
                         items={glassesList}
                     />
-                    <DatePicker
-                        name="DOB"
-                        label="Date of Birth"
-                        value={values.DOB}
-                        onChange={handleInputChange}
+                    <Button
+                        style={{
+                            textAlign: "left"
+                        }}
+                        onClick={postData}
+                        type="submit"
+                        text="Submit"
+                        disabled={disabled}
                     />
-                    <div>
-                        <Button
-                            onClick={postData}
-                            type="submit"
-                            text="Submit"
-                        />
-                        <Button
-                            type="reset"
-                            text="Reset"
-                            color="default"
-                            onClick={resetForm}/>
-                    </div>
+                    <Button
+                        d
+                        type="reset"
+                        text="Reset"
+                        color="default"
+                        onClick={resetForm}/>
 
                 </Grid>
+
             </Grid>
         </Form>
     );
