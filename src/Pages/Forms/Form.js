@@ -1,12 +1,6 @@
 import React from 'react';
 import FormHead from "../Forms/FormHead";
 import {makeStyles, CssBaseline, createTheme, ThemeProvider} from '@material-ui/core';
-import SideMenu from "../../components/SideMenu";
-import Header from "../../components/Header";
-import {withAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react'
-import Amplify from "aws-amplify";
-
-
 
 
 const theme = createTheme({
@@ -20,13 +14,14 @@ const theme = createTheme({
             light: '#f8324526'
         },
         background: {
-            default: "#f4f5fd"
+            default: "#DAF7A6 "
         },
     },
     overrides: {
         MuiAppBar: {
             root: {
-                transform: 'translateZ(0)'
+                transform: 'translateZ(0)',
+                textAlign: 'left'
             }
         }
     },
@@ -39,8 +34,11 @@ const theme = createTheme({
 
 const useStyles = makeStyles({
     appMain: {
-        paddingLeft: '320px',
-        width: '100%'
+        display:'flex',
+        paddingLeft: '0px',
+        width: '100%',
+        //textAlign: 'left'
+
     }
 })
 
@@ -50,11 +48,8 @@ function Form() {
     return (
         <>
             <ThemeProvider theme={theme}>
-                <SideMenu/>
                 <div className={classes.appMain}>
-                    <Header dark/>
                     <FormHead/>
-
                 </div>
                 <CssBaseline/>
             </ThemeProvider>

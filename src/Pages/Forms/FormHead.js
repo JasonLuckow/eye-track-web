@@ -1,14 +1,23 @@
 import React from 'react'
 import InitForm from './InitForm';
 import PageHeader from "../../components/PageHeader"
-import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
-import { Paper,makeStyles } from '@material-ui/core';
+import {Paper, makeStyles, Typography} from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
     pageContent: {
         margin: theme.spacing(5),
         padding: theme.spacing(3),
-    }
+
+    },
+    title: {
+        textAlign: "center"
+    },
+    pageHeader: {
+        padding: theme.spacing(5),
+        display: 'flex',
+        marginBottom: theme.spacing(0),
+        textAlign:'center'
+    },
 }))
 
 export default function FormHead() {
@@ -17,14 +26,20 @@ export default function FormHead() {
 
     return (
         <>
-            <PageHeader
-                //todo: temp value need to import from api
-                title="User"
-                subtitle = "InitForm for new test: "
-                icon={<PeopleOutlineTwoToneIcon fontSize="large" />}
-            />
+
             <Paper className={classes.pageContent}>
-                <InitForm />
+                    <Typography
+                    variant="h3"
+                    component="div"
+                    style ={{
+                        textAlign:'center',
+                        paddingBottom: '10px'
+                    }}
+                >Assessment Form</Typography>
+                    {/*<PageHeader className={classes.title}
+                            title="Assessment Form" align="center"
+                />*/}
+                <InitForm/>
             </Paper>
         </>
     )
