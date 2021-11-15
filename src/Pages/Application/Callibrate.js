@@ -55,8 +55,8 @@ export default function Callibrate()
     root: {
       "& > *": {
         margin: theme.spacing(0),
-        width: theme.spacing(window.innerWidth),
-        height: theme.spacing(window.innerHeight)
+        width: "95%",
+        height: "95%"
       }
     },
     whitePaper: {
