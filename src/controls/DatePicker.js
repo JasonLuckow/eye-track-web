@@ -14,7 +14,7 @@ export default function DatePicker(props) {
 
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardDatePicker disableToolbar variant="inline" inputVariant="outlined"
+            <KeyboardDatePicker variant="inline" inputVariant="outlined"
                                 label={label}
                                 format="MMM/dd/yyyy"
                                 name={name}
