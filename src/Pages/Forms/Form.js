@@ -37,6 +37,7 @@ const useStyles = makeStyles({
         display:'flex',
         paddingLeft: '0px',
         width: '100%',
+        justifyContent: 'center'
         //textAlign: 'left'
 
     }
