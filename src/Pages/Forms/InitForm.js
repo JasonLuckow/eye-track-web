@@ -166,7 +166,6 @@ export default function InitForm() {
                 );
             }
         })
-        console.log(typeof values.DOB, values.DOB)
 
         handlePush()
     }
