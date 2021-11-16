@@ -65,7 +65,7 @@ export default function InitForm() {
         setGender(res.data.SEX)
         setHand(res.data.Hand)
         setGlasses(res.data.Glasses)
-        setDOB(res.data.DOB)
+        setDOB(new Date(res.data.DOB))
     }).catch(function (error) {
         // toast.error('Could not register at this time. Please try again later.');
         console.log("error loading get request")
@@ -132,7 +132,7 @@ export default function InitForm() {
                 axios.patch(patchurl, {
                     FirstName: values.FirstName || firstName,
                     LastName: values.LastName || lastName,
-                    DOB: values.DOB || dob,
+                    DOB: dob || values.DOB,
                     SEX: values.SEX || gender,
                     DisorderDisability: values.DisorderDisability || disorderDisability,
                     Hand: values.Hand || hand,
