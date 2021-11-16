@@ -34,7 +34,7 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "^4.0.3",
     "web-vitals": "^1.1.2",
-    "webgazer": "^2.1.0"
+    "webgazer": "github:JasonLuckow/WebGazer"
   },
   "scripts": {
     "start": "react-scripts start",
