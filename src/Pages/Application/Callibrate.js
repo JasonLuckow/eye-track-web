@@ -252,320 +252,320 @@ export default function Callibrate()
       </Grid>
     </Grid>
   )
-  :index <= 65 ?
-  (
+  // :index <= 65 ?
+  // (
     
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-            <Paper className={classes.whitePaper}> 
-              <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/>  
-              <CallibrateTypography/>
-            </Paper>
-        </div>
-      </Grid>
-    </Grid>
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //           <Paper className={classes.whitePaper}> 
+  //             <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/>  
+  //             <CallibrateTypography/>
+  //           </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
 
-  ):index <= 70 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.whitePaper}>   
-            <CallibrateButton width = {30} height = {30} left = {4*window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/>
-            <CallibrateTypography/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 75 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.whitePaper}>   
-            <CallibrateButton width = {30} height = {30} left = {7*window.innerWidth/12} top = {window.innerHeight/4}  onClick={ButtonClicked}/>
-            <CallibrateTypography/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 80 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.whitePaper}>   
-            <CallibrateButton width = {30} height = {30} left = {10*window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/>
-            <CallibrateTypography/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 85 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.whitePaper}>   
-            <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {window.innerHeight/2} onClick={ButtonClicked}/>
-            <CallibrateTypography/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 90 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.whitePaper}>   
-            <CallibrateButton width = {30} height = {30} left = {4*window.innerWidth/12} top = {window.innerHeight/2}  onClick={ButtonClicked}/>
-            <CallibrateTypography/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 95 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.whitePaper}>   
-            <CallibrateButton width = {30} height = {30} left = {7*window.innerWidth/12} top = {window.innerHeight/2} onClick={ButtonClicked}/>
-            <CallibrateTypography/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 100 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.whitePaper}>   
-            <CallibrateButton width = {30} height = {30} left = {10*window.innerWidth/12} top = {window.innerHeight/2} onClick={ButtonClicked}/>
-            <CallibrateTypography/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <=105?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.whitePaper}>   
-            <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {3*window.innerHeight/4} onClick={ButtonClicked}/>
-            <CallibrateTypography/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 110 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.whitePaper}>   
-            <CallibrateButton width = {30} height = {30} left = {4*window.innerWidth/12} top = {3*window.innerHeight/4}  onClick={ButtonClicked}/>
-            <CallibrateTypography/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 115 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.whitePaper}>   
-            <CallibrateButton width = {30} height = {30} left = {7*window.innerWidth/12} top = {3*window.innerHeight/4} onClick={ButtonClicked}/>
-            <CallibrateTypography/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 120 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.whitePaper}>   
-            <CallibrateButton width = {30} height = {30} left = {10*window.innerWidth/12} top = {3*window.innerHeight/4} onClick={ButtonClicked}/>
-            <CallibrateTypography/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 125 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.blackPaper}> 
-            <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/> 
-            <CallibrateTypography color = 'white'/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  ):index <= 130 ?
-  (
+  // ):index <= 70 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.whitePaper}>   
+  //           <CallibrateButton width = {30} height = {30} left = {4*window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/>
+  //           <CallibrateTypography/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 75 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.whitePaper}>   
+  //           <CallibrateButton width = {30} height = {30} left = {7*window.innerWidth/12} top = {window.innerHeight/4}  onClick={ButtonClicked}/>
+  //           <CallibrateTypography/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 80 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.whitePaper}>   
+  //           <CallibrateButton width = {30} height = {30} left = {10*window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/>
+  //           <CallibrateTypography/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 85 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.whitePaper}>   
+  //           <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {window.innerHeight/2} onClick={ButtonClicked}/>
+  //           <CallibrateTypography/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 90 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.whitePaper}>   
+  //           <CallibrateButton width = {30} height = {30} left = {4*window.innerWidth/12} top = {window.innerHeight/2}  onClick={ButtonClicked}/>
+  //           <CallibrateTypography/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 95 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.whitePaper}>   
+  //           <CallibrateButton width = {30} height = {30} left = {7*window.innerWidth/12} top = {window.innerHeight/2} onClick={ButtonClicked}/>
+  //           <CallibrateTypography/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 100 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.whitePaper}>   
+  //           <CallibrateButton width = {30} height = {30} left = {10*window.innerWidth/12} top = {window.innerHeight/2} onClick={ButtonClicked}/>
+  //           <CallibrateTypography/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <=105?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.whitePaper}>   
+  //           <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {3*window.innerHeight/4} onClick={ButtonClicked}/>
+  //           <CallibrateTypography/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 110 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.whitePaper}>   
+  //           <CallibrateButton width = {30} height = {30} left = {4*window.innerWidth/12} top = {3*window.innerHeight/4}  onClick={ButtonClicked}/>
+  //           <CallibrateTypography/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 115 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.whitePaper}>   
+  //           <CallibrateButton width = {30} height = {30} left = {7*window.innerWidth/12} top = {3*window.innerHeight/4} onClick={ButtonClicked}/>
+  //           <CallibrateTypography/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 120 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.whitePaper}>   
+  //           <CallibrateButton width = {30} height = {30} left = {10*window.innerWidth/12} top = {3*window.innerHeight/4} onClick={ButtonClicked}/>
+  //           <CallibrateTypography/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 125 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.blackPaper}> 
+  //           <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/> 
+  //           <CallibrateTypography color = 'white'/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // ):index <= 130 ?
+  // (
     
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.blackPaper}> 
-            <CallibrateButton width = {30} height = {30} left = {4*window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/>
-            <CallibrateTypography color = 'white'/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.blackPaper}> 
+  //           <CallibrateButton width = {30} height = {30} left = {4*window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/>
+  //           <CallibrateTypography color = 'white'/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
 
-  )
-  :index <= 135 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.blackPaper}> 
-            <CallibrateButton width = {30} height = {30} left = {7*window.innerWidth/12} top = {window.innerHeight/4}  onClick={ButtonClicked}/>
-            <CallibrateTypography color = 'white'/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 140 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.blackPaper}> 
-            <CallibrateButton width = {30} height = {30} left = {10*window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/>
-            <CallibrateTypography color = 'white'/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 145 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.blackPaper}> 
-            <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {window.innerHeight/2} onClick={ButtonClicked}/>
-            <CallibrateTypography color = 'white'/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 150 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.blackPaper}> 
-            <CallibrateButton width = {30} height = {30} left = {4*window.innerWidth/12} top = {window.innerHeight/2}  onClick={ButtonClicked}/>
-            <CallibrateTypography color = 'white'/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 155 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.blackPaper}> 
-            <CallibrateButton width = {30} height = {30} left = {7*window.innerWidth/12} top = {window.innerHeight/2} onClick={ButtonClicked}/>
-            <CallibrateTypography color = 'white'/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 160 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.blackPaper}> 
-            <CallibrateButton width = {30} height = {30} left = {10*window.innerWidth/12} top = {window.innerHeight/2} onClick={ButtonClicked}/>
-            <CallibrateTypography color = 'white'/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <=165?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.blackPaper}> 
-            <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {3*window.innerHeight/4} onClick={ButtonClicked}/>
-            <CallibrateTypography color = 'white'/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 170 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.blackPaper}> 
-            <CallibrateButton width = {30} height = {30} left = {4*window.innerWidth/12} top = {3*window.innerHeight/4}  onClick={ButtonClicked}/>
-            <CallibrateTypography color = 'white'/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 175 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.blackPaper}> 
-            <CallibrateButton width = {30} height = {30} left = {7*window.innerWidth/12} top = {3*window.innerHeight/4} onClick={ButtonClicked}/>
-            <CallibrateTypography color = 'white'/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
-  :index <= 180 ?
-  (
-    <Grid container>
-      <Grid item xs={12}>
-        <div className={classes.root}>
-          <Paper className={classes.blackPaper}> 
-            <CallibrateButton width = {30} height = {30} left = {10*window.innerWidth/12} top = {3*window.innerHeight/4} onClick={ButtonClicked}/>
-            <CallibrateTypography color = 'white'/>
-          </Paper>
-        </div>
-      </Grid>
-    </Grid>
-  )
+  // )
+  // :index <= 135 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.blackPaper}> 
+  //           <CallibrateButton width = {30} height = {30} left = {7*window.innerWidth/12} top = {window.innerHeight/4}  onClick={ButtonClicked}/>
+  //           <CallibrateTypography color = 'white'/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 140 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.blackPaper}> 
+  //           <CallibrateButton width = {30} height = {30} left = {10*window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/>
+  //           <CallibrateTypography color = 'white'/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 145 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.blackPaper}> 
+  //           <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {window.innerHeight/2} onClick={ButtonClicked}/>
+  //           <CallibrateTypography color = 'white'/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 150 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.blackPaper}> 
+  //           <CallibrateButton width = {30} height = {30} left = {4*window.innerWidth/12} top = {window.innerHeight/2}  onClick={ButtonClicked}/>
+  //           <CallibrateTypography color = 'white'/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 155 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.blackPaper}> 
+  //           <CallibrateButton width = {30} height = {30} left = {7*window.innerWidth/12} top = {window.innerHeight/2} onClick={ButtonClicked}/>
+  //           <CallibrateTypography color = 'white'/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 160 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.blackPaper}> 
+  //           <CallibrateButton width = {30} height = {30} left = {10*window.innerWidth/12} top = {window.innerHeight/2} onClick={ButtonClicked}/>
+  //           <CallibrateTypography color = 'white'/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <=165?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.blackPaper}> 
+  //           <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {3*window.innerHeight/4} onClick={ButtonClicked}/>
+  //           <CallibrateTypography color = 'white'/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 170 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.blackPaper}> 
+  //           <CallibrateButton width = {30} height = {30} left = {4*window.innerWidth/12} top = {3*window.innerHeight/4}  onClick={ButtonClicked}/>
+  //           <CallibrateTypography color = 'white'/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 175 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.blackPaper}> 
+  //           <CallibrateButton width = {30} height = {30} left = {7*window.innerWidth/12} top = {3*window.innerHeight/4} onClick={ButtonClicked}/>
+  //           <CallibrateTypography color = 'white'/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
+  // :index <= 180 ?
+  // (
+  //   <Grid container>
+  //     <Grid item xs={12}>
+  //       <div className={classes.root}>
+  //         <Paper className={classes.blackPaper}> 
+  //           <CallibrateButton width = {30} height = {30} left = {10*window.innerWidth/12} top = {3*window.innerHeight/4} onClick={ButtonClicked}/>
+  //           <CallibrateTypography color = 'white'/>
+  //         </Paper>
+  //       </div>
+  //     </Grid>
+  //   </Grid>
+  // )
   :
   (
     <Grid container>

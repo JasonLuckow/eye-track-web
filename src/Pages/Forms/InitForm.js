@@ -46,7 +46,7 @@ export default function InitForm() {
     const [gender, setGender] = useState(null)
     const [hand, setHand] = useState(null)
     const [glasses, setGlasses] = useState(null)
-    const [dob, setDOB] = useState(null)
+    const [dob, setDOB] = useState(new Date())
     const [url, setUrl] = useState(null)
 
     // Only need to do this once but it does this at every render
