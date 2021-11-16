@@ -86,10 +86,12 @@ export default function Callibrate()
 
   return index < 5 ?
   (
-    <Grid container>
+    <>
+    <FrontCam/>
+    <Grid container spacing={2} style={{ width: "95%", height: "95%" }} alignItems="flex-start">
       <Grid item xs={12}>
-        <div className={classes.root}>
-        <FrontCam/>
+        {/* <div className={classes.root}> */}
+        
         <Popup
             ButtonText = "Understood"
             title = "Recommendations"
@@ -98,12 +100,13 @@ export default function Callibrate()
             <StepsToFollow/>
           </Popup>
             <Paper className={classes.greyPaper}> 
-              <CallibrateButton  onClick={ButtonClicked}/>
+            <CallibrateButton width = {30} height = {30} left = {window.innerWidth/12} top = {window.innerHeight/4} onClick={ButtonClicked}/>
               <CallibrateTypography/>
             </Paper>
-        </div>
+        {/* </div> */}
       </Grid>
     </Grid>
+    </>
   ):index < 10 ?
   (
     <Grid container>

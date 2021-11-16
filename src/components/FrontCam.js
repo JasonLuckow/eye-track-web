@@ -18,13 +18,15 @@ export default function FrontCam() {
             }
             
             key = "xy:" + count
-            webgazer.setVideoViewerSize(videoViewerWidth, videoViewerHeight)
+            
             eyeMap.set(key, [data.x.toString(), data.y.toString(), performance.now()])
             // console.log(eyeMap.get(key), key)
             window.localStorage.setItem(key, [data.x.toString(), data.y.toString(), performance.now(), count]);
             // console.log('at localstorage', window.localStorage.getItem(key), key)
             count += 1
-        }).begin();
+            webgazer.setVideoViewerSize(videoViewerWidth, videoViewerHeight)
+        })
+        webgazer.begin();
         
         webgazer.showFaceOverlay(false)
     }, []);
