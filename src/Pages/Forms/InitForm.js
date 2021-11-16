@@ -29,7 +29,7 @@ const initialFValues = {
     //id: 0,
     FirstName: '',
     LastName: '',
-    DOB: new Date(),
+    DOB: '',
     SEX: '',
     DisorderDisability: '',
     Hand: '',
@@ -46,6 +46,7 @@ export default function InitForm() {
     const [gender, setGender] = useState(null)
     const [hand, setHand] = useState(null)
     const [glasses, setGlasses] = useState(null)
+    const [dob, setDOB] = useState(null)
     const [url, setUrl] = useState(null)
 
     // Only need to do this once but it does this at every render
@@ -64,6 +65,7 @@ export default function InitForm() {
         setGender(res.data.SEX)
         setHand(res.data.Hand)
         setGlasses(res.data.Glasses)
+        setDOB(res.data.DOB)
     }).catch(function (error) {
         // toast.error('Could not register at this time. Please try again later.');
         console.log("error loading get request")
@@ -117,6 +119,8 @@ export default function InitForm() {
 
     //todo: replace with actual api989
     const postData = () => {
+        // console.log('dob')
+        console.log(dob, typeof dob)
         setDisabled(true)
         const geturl = process.env.REACT_APP_APIRoot + "/TestGroup/get?type=email&identifier=" + email
         axios.get(geturl
@@ -128,7 +132,7 @@ export default function InitForm() {
                 axios.patch(patchurl, {
                     FirstName: values.FirstName || firstName,
                     LastName: values.LastName || lastName,
-                    DOB: values.DOB,
+                    DOB: values.DOB || dob,
                     SEX: values.SEX || gender,
                     DisorderDisability: values.DisorderDisability || disorderDisability,
                     Hand: values.Hand || hand,
@@ -157,11 +161,13 @@ export default function InitForm() {
                     console.log("error loading next page")
                     // setShowRegSpinner(false);
                 }).finally(() => {
-                        handlePush()
+                        // handlePush()
                     }
                 );
             }
         })
+        console.log(typeof values.DOB, values.DOB)
+
         handlePush()
     }
     const getData = () => {
@@ -236,7 +242,7 @@ export default function InitForm() {
                     <DatePicker
                         name="DOB"
                         label="Date of Birth"
-                        value={values.DOB}
+                        value={values.DOB || dob}
                         onChange={handleInputChange}
                     />
                 </Grid>
