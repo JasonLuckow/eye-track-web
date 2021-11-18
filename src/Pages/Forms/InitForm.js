@@ -8,6 +8,8 @@ import Button from "../../controls/Button";
 import axios from "axios";
 import {Auth} from "aws-amplify";
 import {useHistory} from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 require('dotenv').config();
 
@@ -16,8 +18,8 @@ const genderList = [
     {id: 'female', title: 'Female'}
 ]
 const handList = [
-    {id: 'left', title: 'Right'},
-    {id: 'right', title: 'Left'}
+    {id: 'right', title: 'Right'},
+    {id: 'left', title: 'Left'}
 ]
 
 const glassesList = [
@@ -30,10 +32,10 @@ const initialFValues = {
     FirstName: '',
     LastName: '',
     DOB: '',
-    SEX: '',
+    SEX: null,
     DisorderDisability: '',
-    Hand: '',
-    Glasses: '',
+    Hand: null,
+    Glasses: null,
     // email: '',
 }
 
@@ -46,7 +48,7 @@ export default function InitForm() {
     const [gender, setGender] = useState(null)
     const [hand, setHand] = useState(null)
     const [glasses, setGlasses] = useState(null)
-    const [dob, setDOB] = useState(new Date())
+    const [dob, setDOB] = useState(null)
     const [url, setUrl] = useState(null)
 
     // Only need to do this once but it does this at every render
@@ -65,10 +67,10 @@ export default function InitForm() {
         setGender(res.data.SEX)
         setHand(res.data.Hand)
         setGlasses(res.data.Glasses)
-        setDOB(new Date(res.data.DOB))
+        setDOB((res.data.DOB))
     }).catch(function (error) {
         // toast.error('Could not register at this time. Please try again later.');
-        console.log("error loading get request")
+        console.log("error loading get request on form")
         // setShowRegSpinner(false);
     });
 
@@ -119,8 +121,6 @@ export default function InitForm() {
 
     //todo: replace with actual api989
     const postData = () => {
-        // console.log('dob')
-        console.log(dob, typeof dob)
         setDisabled(true)
         const geturl = process.env.REACT_APP_APIRoot + "/TestGroup/get?type=email&identifier=" + email
         axios.get(geturl
@@ -132,21 +132,24 @@ export default function InitForm() {
                 axios.patch(patchurl, {
                     FirstName: values.FirstName || firstName,
                     LastName: values.LastName || lastName,
-                    DOB: dob || values.DOB,
+                    DOB: values.DOB || dob,
                     SEX: values.SEX || gender,
                     DisorderDisability: values.DisorderDisability || disorderDisability,
                     Hand: values.Hand || hand,
                     Glasses: values.Glasses || glasses,
                     Email: email
                 }).then(function (response) {
-                    console.log("patch response:", response);
+                    toast.success("Success! Let's calibrate");
+                    // console.log("patch response:", response);
+                    handlePush()
                 }).catch(function (error) {
-                    // toast.error('Could not register at this time. Please try again later.');
-                    console.log("error loading next page")
+                    toast.error('Could not update your information');
+                    console.log("error at patch request on form")
                     // setShowRegSpinner(false);
                 });
             }
         }).catch(function (error) {
+            console.log("could not patch")
             const posturl = process.env.REACT_APP_APIRoot + "/TestGroup/post"
             if (index == -1) {
                 axios.post(posturl, {
@@ -154,20 +157,19 @@ export default function InitForm() {
                     DisorderDisability: values.DisorderDisability, Hand: values.Hand, Glasses: values.Glasses,
                     Email: email
                 }).then(function (response) {
-                    console.log("post response:", response);
-
+                    toast.success("Success! Let's calibrate");
+                    // console.log("post response:", response);
+                    handlePush()
                 }).catch(function (error) {
-                    // toast.error('Could not register at this time. Please try again later.');
-                    console.log("error loading next page")
+                    toast.error('Could not process your data. Make sure all fields are filled out.');
+                    console.log("error at post request on form")
+                    setDisabled(false)
                     // setShowRegSpinner(false);
-                }).finally(() => {
-                        // handlePush()
-                    }
-                );
+                })
             }
         })
 
-        handlePush()
+        
     }
     const getData = () => {
         // const email = ""
@@ -214,6 +216,18 @@ export default function InitForm() {
     // if (error) return `Error: ${error.message}`;
     //  if (!post) return "No post!"
     return (
+        <>
+        <ToastContainer
+				position="bottom-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss={false}
+				draggable={false}
+				pauseOnHover
+			/>
         <Form onSubmit={handleSubmit}>
             <Grid container>
                 <Grid item xs={6}>
@@ -286,6 +300,7 @@ export default function InitForm() {
 
             </Grid>
         </Form>
+        </>
     );
 
 }

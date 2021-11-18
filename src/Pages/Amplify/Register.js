@@ -3,6 +3,8 @@ import { Auth } from 'aws-amplify';
 import AmplifyInput from "./AmplifyInput";
 import { Link, useHistory } from 'react-router-dom';
 import bg from '../../Images/EyeTracking.jpg'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Register = () => {
   let history = useHistory();
@@ -26,11 +28,24 @@ const Register = () => {
       });
       history.push("/confirm-register");
     } catch (error) {
+      toast.error(error.message);
       console.log('error', error);
     }
   }
 
   return (
+    <>
+    <ToastContainer
+				position="bottom-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss={false}
+				draggable={false}
+				pauseOnHover
+			/>
     <div className="container w-4/12 w-medium">
       <div className="bg-white shadow-xl rounded px-12 pt-6 pb-8 mb-4">
         <h3 className="text-lg text-gray-700">Register</h3>
@@ -68,6 +83,7 @@ const Register = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

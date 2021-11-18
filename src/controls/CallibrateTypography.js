@@ -17,8 +17,8 @@ export default function CallibrateTypography(props) {
         <ThemeProvider theme={theme}>
             <div className="App">
               <Typography variant = "h2">
-                <h1 style={{fontSize: '2rem', color: color || 'black' , position: 'absolute', left: 5*window.innerWidth/12, top: window.innerHeight/10}}>Click Button 5 Times </h1>
-                <h1 style={{fontSize: '1.25rem', color: color || 'black', position: 'absolute', left: 5*window.innerWidth/12, top: window.innerHeight/7}}>
+                <h1 style={{fontSize: '2rem', color: color || 'black' , position: 'absolute', left: 5*window.innerWidth/12, top: window.innerHeight/11}}>Click Button 5 Times </h1>
+                <h1 style={{fontSize: '1.25rem', color: color || 'black', position: 'absolute', left: 5*window.innerWidth/12, top: window.innerHeight/6}}>
                   Make Sure Face Stays in the Green Box
                 </h1>
               </Typography>

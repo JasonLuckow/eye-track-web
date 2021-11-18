@@ -18,6 +18,8 @@ import Popup from "../../components/Popup";
 import RecommendedSetup from "../../Other/RecommendedSetup";
 import StepsToFollow from "../../Other/StepsToFollow";
 import {useHistory} from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 // watch the video
 // https://react.school/material-ui/paper
@@ -81,6 +83,7 @@ export default function Callibrate()
   }
 
   function handlePush() {
+    toast.success("Time to test!");
     setTimeout(() => history.push('/test-page'), 2000);
 }
 
@@ -568,12 +571,24 @@ export default function Callibrate()
   // )
   :
   (
+    <>
+    <ToastContainer
+				position="bottom-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss={false}
+				draggable={false}
+				pauseOnHover
+			/>
     <Grid container>
       <Grid item xs={12}>
         <div className = {classes.root}>
           <ThemeProvider theme={theme}>
             <div className="App">
-            <FrontCam/>
+            {/* <FrontCam/> */}
               <MuiButton
                 variant={"contained"}
                 size={"small"}
@@ -597,6 +612,7 @@ export default function Callibrate()
         </div>
       </Grid>
     </Grid>
+    </>
   )
 }
 

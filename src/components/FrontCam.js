@@ -22,7 +22,7 @@ export default function FrontCam() {
             eyeMap.set(key, [data.x.toString(), data.y.toString(), performance.now()])
             // console.log(eyeMap.get(key), key)
             window.localStorage.setItem(key, [data.x.toString(), data.y.toString(), performance.now(), count]);
-            // console.log('at localstorage', window.localStorage.getItem(key), key)
+            console.log('at localstorage', window.localStorage.getItem(key), key)
             count += 1
             webgazer.setVideoViewerSize(videoViewerWidth, videoViewerHeight)
         })

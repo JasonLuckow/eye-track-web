@@ -12,6 +12,8 @@ import axios from "axios";
 import { Auth } from "aws-amplify";
 import webgazer from 'webgazer';
 import {useHistory} from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 let tempVal;
 let buttonValHash = new Map();
@@ -46,11 +48,11 @@ export default function TestPage() {
         if (index === totalQ - 2) { setButtonTextIndex(1) }
 
         if (fill1 && fill2 && fill3 && fill4 && fillNo) {
-            alert(`Please at least one button!`)
+            toast.error(`Please at least one button!`)
         } else if ((!fill1 || !fill2 || !fill3 || !fill4) && (!fillNo)) {
-            alert(`Invalid selection`)
+            toast.error(`Invalid selection`)
         } else if ((!fill1 && fill2 && fill3 && fill4) || (fill1 && !fill2 && fill3 && fill4) || (fill1 && fill2 && !fill3 && fill4) || (fill1 && fill2 && fill3 && !fill4)) {
-            alert(`Select another button`)
+            toast.error(`Select another button`)
         } else {
             setIndex(index + 1)
             
@@ -82,9 +84,15 @@ export default function TestPage() {
     const history = useHistory();
 
     function handlePush() {
-        setTimeout(() => history.push('/'), 2000);
+        setTimeout(() => history.push('/log-in'), 2000);
     }
     async function signOut() {
+        webgazer.end()
+        webgazer.stopVideo()
+        webgazer.showVideo(false)
+        webgazer.showPredictionPoints(false)
+        toast.success("Signing out...");
+        postSelectionsData();
         try {
             await Auth.signOut();
         } catch (error) {
@@ -98,7 +106,6 @@ export default function TestPage() {
         for(let i in localStorage) {
             if (i.startsWith('xy:')){
                 eyeMap.push(localStorage[i])
-                // console.log(localStorage[i], i);
                 window.localStorage.removeItem(i)
             }
             
@@ -146,6 +153,17 @@ export default function TestPage() {
                 <RecommendedSetup />
                 <StepsToFollow />
             </Popup>
+            <ToastContainer
+				position="bottom-right"
+				autoClose={1000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss={false}
+				draggable={false}
+				pauseOnHover
+			/>
             <Grid container spacing={2} style={{ width: "95%", height: "95%" }} alignItems="flex-start">
 
 
@@ -176,7 +194,7 @@ export default function TestPage() {
                 </Grid>
 
                 <Grid container item xs={6} alignItems="flex-end" justify="center">
-                    <FrontCam/>
+                    {/* <FrontCam/> */}
                 </Grid>
 
                 <Grid container item xs={3} justify="center">
@@ -186,7 +204,17 @@ export default function TestPage() {
         </>
     ) : (
         <>
-            
+            <ToastContainer
+				position="bottom-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss={false}
+				draggable={false}
+				pauseOnHover
+			/>
             <h2>YOU HAVE COMPLETED YOUR ASSESSMENT</h2>
             <Button onClick={signOut} text="Finish" />
 

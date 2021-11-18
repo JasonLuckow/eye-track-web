@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useHistory, Link } from "react-router-dom";
 import AmplifyInput from "./AmplifyInput";
 import "tailwindcss/tailwind.css"
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const LogIn = () => {
@@ -22,12 +24,26 @@ const LogIn = () => {
         username: user.username,
         password: user.password,
       });
-      history.push('./form')
+      toast.success("Success!");
+      setTimeout(() => history.push('./form'), 2000);
     } catch (error) {
+      toast.error(error.message);
       console.error('error', error);
     }
   }
   return (
+    <>
+    <ToastContainer
+				position="bottom-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss={false}
+				draggable={false}
+				pauseOnHover
+			/>
     <div className="container w-4/12 w-medium ">
       <div className="bg-white shadow-xl rounded px-12 pt-6 pb-8 mb-4">
         <h3 className="text-lg text-gray-800 mb-2">Log In</h3>
@@ -64,6 +80,7 @@ const LogIn = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

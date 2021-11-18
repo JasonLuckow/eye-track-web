@@ -15,7 +15,7 @@ export default function Popup(props){
 
     const [closePopup, setClosePopup] = useState(true)
     const ClosePopup = () => {
-        setTimeout(() => {setClosePopup(!closePopup)}, 2000);
+        setTimeout(() => {setClosePopup(!closePopup)}, 1000);
         // setClosePopup(!closePopup);
     }
 
