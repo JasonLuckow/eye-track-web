@@ -11,10 +11,11 @@ import { Grid, Paper } from "@material-ui/core";
 import axios from "axios";
 import { Auth } from "aws-amplify";
 import webgazer from 'webgazer';
+import {useHistory} from "react-router-dom";
 
-var tempVal;
-var buttonValHash = new Map();
-var eyeMap = new Array();
+let tempVal;
+let buttonValHash = new Map();
+let eyeMap = [];
 
 require('dotenv').config();
 
@@ -76,11 +77,25 @@ export default function TestPage() {
         setIndex(0);
         setButtonTextIndex(0);
 
+
+    }
+    const history = useHistory();
+
+    function handlePush() {
+        setTimeout(() => history.push('/'), 2000);
+    }
+    async function signOut() {
+        try {
+            await Auth.signOut();
+        } catch (error) {
+            console.log('error signing out: ', error);
+        }
+        handlePush()
     }
 
     const postSelectionsData = () => {
 
-        for(var i in localStorage) {
+        for(let i in localStorage) {
             if (i.startsWith('xy:')){
                 eyeMap.push(localStorage[i])
                 // console.log(localStorage[i], i);
@@ -173,8 +188,7 @@ export default function TestPage() {
         <>
             
             <h2>YOU HAVE COMPLETED YOUR ASSESSMENT</h2>
-            <Button onClick={Reset} text="Restart Test" />
-            <AmplifySignOut />
+            <Button onClick={signOut} text="Finish" />
 
         </>
     )
