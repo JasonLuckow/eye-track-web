@@ -2,6 +2,8 @@ import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { Auth } from 'aws-amplify';
 import {useEffect, useState, setState} from 'react';
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export function ProtectedRoute({ component: Component, ...rest }){
 
@@ -17,9 +19,12 @@ export function ProtectedRoute({ component: Component, ...rest }){
                     setLoggedIn(true);
                 } else
                 {
+                    
                     setLoggedIn(false);
                 }
             } catch (e) {
+                // console.log('here')
+                toast.error('Please sign in!');
                 setLoggedIn(false);
             }
         })();
@@ -27,12 +32,25 @@ export function ProtectedRoute({ component: Component, ...rest }){
     });
     
     return (
+        <>
+    <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover
+    />
         <Route
             {...rest}
             render={props =>
                 isAuthenticated ? <Component {...props} /> : <Redirect to="/" />
             }
         />
+        </>
     );
 }
 export default ProtectedRoute;
